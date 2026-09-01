@@ -26,7 +26,7 @@
       <nav class="main-nav">
         <a href="#sites">Soluções</a>
         <a href="#processo">Processo</a>
-        <a href="#servicos">Serviços</a>
+        <a href="#agencia360">Serviços</a>
         <a href="marketing.html">Marketing</a>
         <a href="#faq">FAQ</a>
       </nav>
@@ -210,44 +210,82 @@
       </div>
     </section>
 
-    <section class="section" id="sites">
-      <div class="container">
-        <div class="section-heading reveal">
-          <span class="section-kicker">Nosso carro-chefe</span>
-          <h2>Soluções criados para <span>posicionar, convencer e vender.</span></h2>
-          <p>Você não precisa apenas estar na internet. Precisa parecer profissional, transmitir confiança e conduzir o visitante até a ação certa.</p>
-        </div>
+    
+<section class="section package-section" id="sites">
+  <div class="container">
+    <div class="section-heading reveal package-heading">
+      <span class="section-kicker">Escolha seu caminho</span>
+      <h2>Comece pelo que sua marca <span>precisa agora.</span></h2>
+      <p>Escolha uma frente principal. Depois, você define exatamente o formato do projeto dentro dela.</p>
+    </div>
 
-        <div class="service-grid">
-          <article class="service-card featured reveal">
-            <span class="card-number">01</span>
-            <div class="service-icon">↗</div>
-            <h3>Landing Page</h3>
-            <p>Uma página focada em conversão para campanhas, produtos, serviços, eventos ou captação de leads.</p>
-            <ul><li>Design personalizado</li><li>Mobile first</li><li>CTA estratégico</li><li>Integração com WhatsApp</li></ul>
-            <a href="#contato">Solicitar projeto <span>→</span></a>
-          </article>
+    <div class="package-grid">
+      <article class="package-card featured reveal">
+        <span class="package-number">01</span>
+        <div class="package-icon">↗</div>
+        <span class="package-label">WEB & TECNOLOGIA</span>
+        <h3>Site</h3>
+        <p>Para construir ou evoluir a presença digital da sua empresa com uma estrutura profissional.</p>
+        <ul>
+          <li>Landing Pages</li>
+          <li>Sites Institucionais</li>
+          <li>Projetos Personalizados</li>
+        </ul>
+        <button class="package-open" type="button" data-package="site">
+          Escolher tipo de site <span>→</span>
+        </button>
+      </article>
 
-          <article class="service-card reveal delay-1">
-            <span class="card-number">02</span>
-            <div class="service-icon">⌘</div>
-            <h3>Site Profissional</h3>
-            <p>Site institucional completo para apresentar sua empresa, serviços, diferenciais e gerar novas oportunidades.</p>
-            <ul><li>Arquitetura estratégica</li><li>SEO básico</li><li>Formulários</li><li>Páginas sob medida</li></ul>
-            <a href="#contato">Solicitar projeto <span>→</span></a>
-          </article>
+      <article class="package-card reveal delay-1">
+        <span class="package-number">02</span>
+        <div class="package-icon">◎</div>
+        <span class="package-label">MARKETING & PERFORMANCE</span>
+        <h3>Marketing</h3>
+        <p>Para marcas que já existem no digital e precisam aumentar presença, alcance e oportunidades.</p>
+        <ul>
+          <li>Social Media</li>
+          <li>Tráfego Pago</li>
+          <li>Conteúdo & Criativos</li>
+        </ul>
+        <button class="package-open" type="button" data-package="marketing">
+          Escolher serviço de marketing <span>→</span>
+        </button>
+      </article>
 
-          <article class="service-card reveal delay-2">
-            <span class="card-number">03</span>
-            <div class="service-icon">✦</div>
-            <h3>Projeto Personalizado</h3>
-            <p>Para negócios que precisam de algo além do tradicional: catálogos, portais, páginas especiais e experiências digitais.</p>
-            <ul><li>Projeto sob medida</li><li>Integrações</li><li>Experiência personalizada</li><li>Escalável</li></ul>
-            <a href="#contato">Falar sobre projeto <span>→</span></a>
-          </article>
-        </div>
-      </div>
-    </section>
+      <article class="package-card combo reveal delay-2">
+        <span class="package-number">03</span>
+        <div class="package-icon">✦</div>
+        <span class="package-label">ESTRUTURA COMPLETA</span>
+        <h3>Site + Marketing</h3>
+        <p>Para conectar presença, comunicação e aquisição em uma única estratégia digital.</p>
+        <ul>
+          <li>Site + Social Media</li>
+          <li>Site + Tráfego Pago</li>
+          <li>Ecossistema Completo</li>
+        </ul>
+        <button class="package-open" type="button" data-package="combo">
+          Montar meu pacote <span>→</span>
+        </button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="package-modal" id="packageModal" aria-hidden="true">
+  <div class="package-modal-backdrop" data-package-close></div>
+
+  <section class="package-modal-panel" role="dialog" aria-modal="true" aria-labelledby="packageModalTitle">
+    <button class="package-modal-close" type="button" data-package-close aria-label="Fechar">×</button>
+
+    <div class="package-modal-head">
+      <span class="section-kicker" id="packageModalKicker">ESCOLHA SEU PLANO</span>
+      <h2 id="packageModalTitle">Qual formato faz mais sentido?</h2>
+      <p id="packageModalIntro">Selecione uma opção para continuar.</p>
+    </div>
+
+    <div class="package-option-grid" id="packageOptions"></div>
+  </section>
+</div>
 
 <section class="founder-dev-section" id="web-dev">
   <div class="founder-dev-backdrop" aria-hidden="true"></div>
@@ -327,23 +365,6 @@
           <div class="process-item reveal delay-2"><span>03</span><h3>Design</h3><p>Criamos uma identidade visual digital coerente com sua marca.</p></div>
           <div class="process-item reveal"><span>04</span><h3>Desenvolvimento</h3><p>Transformamos o layout em um site rápido e responsivo.</p></div>
           <div class="process-item reveal delay-1"><span>05</span><h3>Publicação</h3><p>Revisamos, publicamos e deixamos tudo pronto para receber clientes.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section extras-section" id="servicos">
-      <div class="container extra-layout">
-        <div class="section-heading left reveal">
-          <span class="section-kicker">Além do site</span>
-          <h2>Marketing para colocar <span>movimento</span> na sua presença digital.</h2>
-          <p>Depois que a estrutura está pronta, ajudamos sua marca a chamar atenção, ganhar alcance e gerar oportunidades.</p>
-        </div>
-
-        <div class="extras-list">
-          <article class="extra-item reveal"><span>01</span><div><h3>Social Media</h3><p>Planejamento visual e conteúdo para fortalecer presença nas redes.</p></div><b>↗</b></article>
-          <article class="extra-item reveal delay-1"><span>02</span><div><h3>Tráfego Pago</h3><p>Campanhas orientadas a leads, vendas e crescimento.</p></div><b>↗</b></article>
-          <article class="extra-item reveal delay-2"><span>03</span><div><h3>Identidade Visual</h3><p>Direção de marca, paleta, tipografia e aplicações digitais.</p></div><b>↗</b></article>
-          <article class="extra-item reveal"><span>04</span><div><h3>Criativos</h3><p>Peças para anúncios, redes sociais, lançamentos e campanhas.</p></div><b>↗</b></article>
         </div>
       </div>
     </section>
@@ -474,6 +495,13 @@
         <span class="section-kicker light">Seu próximo passo</span>
         <h2>Seu negócio já está pronto.<br><span>Agora seu site precisa parecer que está.</span></h2>
         <p>Conte um pouco sobre seu projeto e vamos transformar sua presença digital.</p>
+        
+<div class="package-selection-summary" id="packageSelectionSummary" hidden>
+  <span>SUA ESCOLHA</span>
+  <strong id="packageSelectionTitle"></strong>
+  <small id="packageSelectionDescription"></small>
+</div>
+
         <div class="cta-actions">
           <a href="https://wa.me/5500000000000" target="_blank" rel="noopener noreferrer" class="btn btn-light">Falar no WhatsApp</a>
           <a href="mailto:contato@lum.com.br" class="btn btn-outline-light">contato@lum.com.br</a>
@@ -491,7 +519,7 @@
         <a href="#inicio" class="brand footer-brand"><span class="brand-word">lum<span>.</span></span></a>
         <p>Tecnologia, design e marketing para marcas que querem ocupar espaço.</p>
       </div>
-      <div><h4>Navegação</h4><a href="#sites">Soluções</a><a href="#processo">Processo</a><a href="#servicos">Serviços</a><a href="#faq">FAQ</a></div>
+      <div><h4>Navegação</h4><a href="#sites">Soluções</a><a href="#processo">Processo</a><a href="#agencia360">Serviços</a><a href="#faq">FAQ</a></div>
       <div><h4>Serviços</h4><a href="#servicos">Social Media</a><a href="#servicos">Tráfego Pago</a><a href="#servicos">Identidade Visual</a></div>
       <div><h4>Contato</h4><a href="mailto:contato@lum.com.br">E-mail</a><a href="#contato">WhatsApp</a><a href="#">Instagram</a></div>
     </div>
