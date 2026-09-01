@@ -2417,10 +2417,10 @@ section.services-section{
 
 
 /* ==========================================================
-   AJUSTES PÓS-BASE — SEM ALTERAR A ANIMAÇÃO PRINCIPAL
+   RECUPERAÇÃO SEGURA — NÃO TOCA NA ANIMAÇÃO DE SCROLL
    ========================================================== */
 
-/* ---------- Marketing: molduras acompanham as imagens ---------- */
+/* Marketing: remove apenas a moldura visual maior que a arte. */
 .mkt-work-repaired .portfolio-slide{
   border:0 !important;
   background:transparent !important;
@@ -2447,7 +2447,7 @@ section.services-section{
   grid-template-columns:1fr !important;
 }
 
-/* ---------- Carrossel: mesma velocidade desktop/mobile ---------- */
+/* Mesmo ritmo de carrossel em desktop e mobile. */
 .auto-marquee-track,
 .mkt-work-repaired .auto-marquee-track{
   animation-duration:42s !important;
@@ -2455,24 +2455,14 @@ section.services-section{
   animation-iteration-count:infinite !important;
   animation-play-state:running !important;
 }
-
 .auto-marquee:hover .auto-marquee-track,
 .mkt-work-repaired .auto-marquee:hover .auto-marquee-track{
   animation-play-state:running !important;
 }
 
-/* ---------- Mobile: fundadores sem sobreposição ---------- */
+/* Mobile: corrigir SOMENTE cards dos fundadores.
+   Sem overflow em html/body para não interferir no sticky do Safari. */
 @media(max-width:820px){
-  html,body{
-    max-width:100%;
-    overflow-x:hidden;
-  }
-
-  img{
-    max-width:100%;
-    height:auto;
-  }
-
   .founder-dev-profile{
     min-height:0 !important;
     height:auto !important;
@@ -2510,19 +2500,7 @@ section.services-section{
     box-sizing:border-box !important;
   }
 
-  .dev-profile-photo{
-    height:auto !important;
-    min-height:0 !important;
-    aspect-ratio:4/5 !important;
-  }
-
-  .dev-profile-photo img{
-    width:100% !important;
-    height:100% !important;
-    object-fit:cover !important;
-  }
-
-  /* ---------- Mobile marketing galleries ---------- */
+  /* Marketing mobile: apenas galerias/posts. */
   .mkt-work-repaired .gallery-viewport{
     height:auto !important;
     min-height:0 !important;
@@ -2549,12 +2527,9 @@ section.services-section{
     object-fit:contain !important;
   }
 
-  /* ---------- Posts em movimento contínuo ---------- */
   .mkt-work-repaired .auto-marquee{
     overflow:hidden !important;
     width:100% !important;
-    -webkit-mask-image:none !important;
-    mask-image:none !important;
   }
 
   .mkt-work-repaired .auto-marquee-track{
@@ -2564,7 +2539,6 @@ section.services-section{
     gap:14px !important;
     animation-duration:42s !important;
     animation-play-state:running !important;
-    will-change:transform !important;
   }
 
   .mkt-work-repaired .post-slide{
@@ -2580,262 +2554,5 @@ section.services-section{
     height:auto !important;
     max-height:none !important;
     object-fit:contain !important;
-  }
-
-  /* performance mobile sem tocar na animação principal */
-  .glass,
-  .glass-card,
-  .dev-profile-card,
-  .portfolio-slide,
-  .service-card{
-    backdrop-filter:none !important;
-    -webkit-backdrop-filter:none !important;
-  }
-}
-
-@media(max-width:560px){
-  .container{
-    width:min(100% - 28px,1180px) !important;
-  }
-
-  .founder-dev-profile .dev-profile-card,
-  .founder-dev-profile .dev-floating-note,
-  .founder-dev-profile .founder-floating-note{
-    width:100% !important;
-  }
-
-  .mkt-work-repaired .post-slide{
-    width:min(74vw,270px) !important;
-  }
-}
-
-
-/* ==========================================================
-   MOBILE STORY FINAL — sem sticky / sem scroll matemático
-   Desktop original permanece intacto.
-   ========================================================== */
-
-.mobile-story{display:none;}
-
-@media (max-width:650px){
-
-  /* Esconde apenas a experiência desktop no celular */
-  .scroll-story#experiencia{
-    display:none !important;
-  }
-
-  .mobile-story{
-    display:block;
-    background:#08080c;
-    color:#fff;
-    overflow:hidden;
-    border-top:1px solid rgba(255,255,255,.06);
-    border-bottom:1px solid rgba(255,255,255,.06);
-  }
-
-  .mobile-story-intro{
-    padding:72px 24px 42px;
-    text-align:center;
-    background:
-      radial-gradient(circle at 50% 20%,rgba(113,72,255,.12),transparent 42%),
-      #08080c;
-  }
-
-  .mobile-story .section-kicker{
-    display:inline-block;
-    color:#a68cff;
-    font-size:12px;
-    font-weight:800;
-    letter-spacing:.18em;
-    text-transform:uppercase;
-  }
-
-  .mobile-story-intro h2,
-  .mobile-story-end h2{
-    margin:16px auto 0;
-    font:700 38px/.98 'Space Grotesk',sans-serif;
-    letter-spacing:-.045em;
-  }
-
-  .mobile-story-intro h2 span,
-  .mobile-story-end h2 span{
-    color:var(--purple-2);
-  }
-
-  /* collage em fluxo normal: nunca cria tela preta */
-  .mobile-story-collage{
-    position:relative;
-    height:520px;
-    margin:0 0 24px;
-    background:
-      radial-gradient(circle at 20% 25%,rgba(113,72,255,.12),transparent 34%),
-      radial-gradient(circle at 90% 80%,rgba(255,106,0,.08),transparent 30%),
-      #08080c;
-  }
-
-  .mobile-fragment{
-    position:absolute;
-    border:1px solid rgba(255,255,255,.13);
-    background:rgba(18,16,25,.96);
-    box-shadow:0 22px 55px rgba(0,0,0,.36);
-    overflow:hidden;
-  }
-
-  .mobile-fragment-browser{
-    width:78vw;
-    max-width:335px;
-    height:205px;
-    left:-9vw;
-    top:38px;
-    border-radius:17px;
-    transform:rotate(-4deg);
-  }
-
-  .mobile-fragment-social{
-    width:158px;
-    height:218px;
-    right:-28px;
-    top:82px;
-    border-radius:20px;
-    padding:12px;
-    transform:rotate(4deg);
-  }
-
-  .mobile-fragment-ads{
-    width:170px;
-    height:132px;
-    left:-20px;
-    bottom:46px;
-    border-radius:18px;
-    padding:18px;
-    transform:rotate(3deg);
-  }
-
-  .mobile-fragment-code{
-    width:218px;
-    height:135px;
-    right:-46px;
-    bottom:22px;
-    border-radius:16px;
-    padding:15px;
-    transform:rotate(-3deg);
-  }
-
-  .mobile-fragment-browser .frag-top{height:31px}
-  .mobile-fragment-browser .frag-browser-body{
-    padding:27px 24px;
-    height:calc(100% - 31px);
-  }
-  .mobile-fragment-browser .frag-browser-body strong{height:12px}
-  .mobile-fragment-browser .frag-browser-body small{margin-top:15px}
-  .mobile-fragment-browser .frag-browser-body button{
-    margin-top:17px;
-    padding:7px 12px;
-  }
-
-  .mobile-fragment-social .social-head{
-    grid-template-columns:27px 1fr auto;
-    height:35px;
-    gap:6px;
-  }
-  .mobile-fragment-social .social-avatar{width:25px;height:25px;font-size:10px}
-  .mobile-fragment-social .social-head b{font-size:9px}
-  .mobile-fragment-social .social-head small{font-size:7px}
-  .mobile-fragment-social .social-art{height:118px}
-  .mobile-fragment-social .social-art span{font-size:21px}
-
-  .mobile-fragment-ads .ad-value{font-size:31px}
-  .mobile-fragment-ads p{font-size:8px}
-  .mobile-fragment-code pre{font-size:9px;line-height:1.55}
-
-  /* Celular em bloco natural */
-  .mobile-story-phone-wrap{
-    padding:28px 0 58px;
-    text-align:center;
-    background:
-      radial-gradient(circle at 50% 48%,rgba(113,72,255,.14),transparent 34%),
-      #08080c;
-  }
-
-  .mobile-story-phone{
-    position:relative;
-    width:238px;
-    height:486px;
-    margin:0 auto;
-    animation:mobilePhoneFloat 4.5s ease-in-out infinite;
-  }
-
-  @keyframes mobilePhoneFloat{
-    0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-8px)}
-  }
-
-  .mobile-story-phone .phone-shell{
-    width:100%;
-    height:100%;
-    border-radius:40px;
-  }
-
-  .mobile-story-phone .phone-inner{
-    border-radius:32px;
-  }
-
-  .mobile-story-phone .phone-page{
-    padding:45px 18px 20px;
-    opacity:0 !important;
-    transform:translateY(18px) !important;
-    pointer-events:none;
-    transition:opacity .55s ease, transform .55s ease !important;
-  }
-
-  .mobile-story-phone .phone-page.is-active{
-    opacity:1 !important;
-    transform:translateY(0) !important;
-  }
-
-  .mobile-story-phone .mobile-nav{margin-bottom:42px}
-  .mobile-story-phone .mobile-hero h3,
-  .mobile-story-phone .page-two h3{
-    font-size:29px;
-  }
-
-  .mobile-story-dots{
-    display:flex;
-    justify-content:center;
-    gap:7px;
-    margin-top:22px;
-  }
-
-  .mobile-story-dots i{
-    width:6px;
-    height:6px;
-    border-radius:999px;
-    background:#44414d;
-    transition:width .3s ease,background .3s ease;
-  }
-
-  .mobile-story-dots i.is-active{
-    width:22px;
-    background:var(--purple-2);
-  }
-
-  .mobile-story-end{
-    padding:38px 24px 78px;
-    text-align:center;
-    background:
-      radial-gradient(circle at 50% 0%,rgba(255,106,0,.07),transparent 38%),
-      #08080c;
-  }
-
-  .mobile-story-end p{
-    max-width:330px;
-    margin:20px auto 0;
-    color:#9997a5;
-    line-height:1.65;
-    font-size:14px;
-  }
-
-  .mobile-story-end .btn{
-    margin-top:24px;
   }
 }
