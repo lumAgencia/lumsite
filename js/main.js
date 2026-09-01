@@ -252,53 +252,112 @@ if (lumVisual && !window.matchMedia('(prefers-reduced-motion: reduce)').matches)
 
 
 /* ==========================================================
-   MOBILE STORY FINAL
-   Sem sticky e sem cálculo de scroll.
-   Troca de telas confiável no Safari/iPhone.
+   SELETOR DE PACOTES LUM
    ========================================================== */
 (function(){
-  const section = document.querySelector('.mobile-story');
-  if (!section) return;
+  const modal = document.getElementById('packageModal');
+  const optionsRoot = document.getElementById('packageOptions');
+  const title = document.getElementById('packageModalTitle');
+  const kicker = document.getElementById('packageModalKicker');
+  const intro = document.getElementById('packageModalIntro');
+  const summary = document.getElementById('packageSelectionSummary');
+  const summaryTitle = document.getElementById('packageSelectionTitle');
+  const summaryDescription = document.getElementById('packageSelectionDescription');
 
-  const pages = [...section.querySelectorAll('.mobile-story-page')];
-  const dots = [...section.querySelectorAll('.mobile-story-dots i')];
-  const phoneWrap = section.querySelector('.mobile-story-phone-wrap');
+  if(!modal || !optionsRoot) return;
 
-  if (!pages.length || !phoneWrap) return;
+  const packages = {
+    site:{
+      kicker:'SITE',
+      title:'Qual tipo de site você precisa?',
+      intro:'Escolha a estrutura que mais combina com o momento do seu negócio.',
+      options:[
+        ['Landing Page','Página única orientada a conversão, campanhas, produtos ou captação de leads.'],
+        ['Site Institucional','Estrutura completa para apresentar empresa, serviços, diferenciais e gerar oportunidades.'],
+        ['Site Premium','Projeto institucional mais robusto, com maior profundidade visual, conteúdo e experiência.'],
+        ['Projeto Personalizado','Catálogos, portais, integrações, experiências especiais ou uma solução sob medida.']
+      ]
+    },
+    marketing:{
+      kicker:'MARKETING',
+      title:'Onde sua marca precisa de mais força?',
+      intro:'Você pode contratar uma frente específica ou integrar toda a operação.',
+      options:[
+        ['Social Media','Planejamento, calendário, gestão de presença e conteúdo para redes sociais.'],
+        ['Tráfego Pago','Estratégia, campanhas e otimização de mídia para gerar alcance, leads ou vendas.'],
+        ['Conteúdo & Criativos','Peças, campanhas, materiais promocionais e comunicação para canais digitais.'],
+        ['Marketing Completo','Social, conteúdo, campanhas e performance trabalhando de forma conectada.']
+      ]
+    },
+    combo:{
+      kicker:'SITE + MARKETING',
+      title:'Como você quer conectar estrutura e crescimento?',
+      intro:'Escolha a combinação inicial. O escopo final é ajustado ao seu negócio.',
+      options:[
+        ['Site + Social Media','Nova presença digital combinada com comunicação contínua nas redes.'],
+        ['Site + Tráfego Pago','Estrutura preparada para conversão com campanhas levando público qualificado até ela.'],
+        ['Site + Marketing Completo','Site, social, conteúdo e performance integrados em uma estratégia única.'],
+        ['Ecossistema Personalizado','Montamos uma combinação específica de Web, Marketing, Design e Performance.']
+      ]
+    }
+  };
 
-  let timer = null;
-  let current = 0;
-
-  function show(index){
-    current = index % pages.length;
-    pages.forEach((page,i)=>page.classList.toggle('is-active', i===current));
-    dots.forEach((dot,i)=>dot.classList.toggle('is-active', i===current));
+  function closeModal(){
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.classList.remove('package-modal-open');
   }
 
-  function start(){
-    if (timer) return;
-    show(0);
-    timer = setInterval(()=>{
-      show((current + 1) % pages.length);
-    }, 2300);
+  function chooseOption(groupName, optionName, description){
+    const groupLabel = packages[groupName].kicker;
+    if(summary && summaryTitle && summaryDescription){
+      summary.hidden = false;
+      summaryTitle.textContent = `${groupLabel} — ${optionName}`;
+      summaryDescription.textContent = description;
+    }
+    closeModal();
+    document.getElementById('contato')?.scrollIntoView({behavior:'smooth',block:'start'});
   }
 
-  function stop(){
-    if (!timer) return;
-    clearInterval(timer);
-    timer = null;
-  }
+  function openModal(groupName){
+    const data = packages[groupName];
+    if(!data) return;
 
-  const observer = new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
-      if (entry.isIntersecting) start();
-      else stop();
+    kicker.textContent = data.kicker;
+    title.textContent = data.title;
+    intro.textContent = data.intro;
+    optionsRoot.innerHTML = '';
+
+    data.options.forEach(([name,description],index)=>{
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'package-option';
+      button.innerHTML = `
+        <span>OPÇÃO ${String(index+1).padStart(2,'0')}</span>
+        <strong>${name}</strong>
+        <p>${description}</p>
+        <em>Escolher esta opção →</em>
+      `;
+      button.addEventListener('click',()=>chooseOption(groupName,name,description));
+      optionsRoot.appendChild(button);
     });
-  }, {threshold:.25});
 
-  observer.observe(phoneWrap);
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.classList.add('package-modal-open');
+  }
 
-  document.addEventListener('visibilitychange',()=>{
-    if (document.hidden) stop();
+  document.querySelectorAll('.package-open').forEach(button=>{
+    button.addEventListener('click',()=>openModal(button.dataset.package));
+  });
+
+  modal.querySelectorAll('[data-package-close]').forEach(el=>{
+    el.addEventListener('click',closeModal);
+  });
+
+  document.addEventListener('keydown',event=>{
+    if(event.key === 'Escape' && modal.classList.contains('is-open')){
+      closeModal();
+    }
   });
 })();
