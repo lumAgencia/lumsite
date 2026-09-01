@@ -2611,107 +2611,231 @@ section.services-section{
 
 
 /* ==========================================================
-   MOBILE STORY REBUILD — desktop intocado
+   MOBILE STORY FINAL — sem sticky / sem scroll matemático
+   Desktop original permanece intacto.
    ========================================================== */
+
+.mobile-story{display:none;}
+
 @media (max-width:650px){
-  .scroll-story{
-    height:2400px !important;
-    min-height:2400px !important;
-    position:relative !important;
-    overflow:visible !important;
-  }
 
-  .scroll-stage{
-    position:-webkit-sticky !important;
-    position:sticky !important;
-    top:0 !important;
-    height:100svh !important;
-    min-height:560px !important;
-    overflow:hidden !important;
-    display:block !important;
-  }
-
-  /* neutraliza as fórmulas desktop no mobile;
-     o JS mobile controla tudo diretamente */
-  .scroll-copy-start,
-  .scroll-copy-end,
-  .story-fragment,
-  .phone-assembly,
-  .phone-page{
-    transition:none !important;
-    will-change:transform,opacity !important;
-  }
-
-  .scroll-copy-start{
-    width:calc(100% - 28px) !important;
-    left:50% !important;
-    top:50% !important;
-    text-align:center !important;
-  }
-
-  .scroll-copy-start h2{
-    font-size:36px !important;
-  }
-
-  .scroll-copy-end{
-    width:calc(100% - 34px) !important;
-    left:17px !important;
-    top:auto !important;
-    bottom:7% !important;
-    text-align:center !important;
-  }
-
-  .scroll-copy-end h2{
-    font-size:30px !important;
-  }
-
-  .scroll-copy-end p{
+  /* Esconde apenas a experiência desktop no celular */
+  .scroll-story#experiencia{
     display:none !important;
   }
 
-  .phone-assembly{
-    width:230px !important;
-    height:470px !important;
-    left:50% !important;
-    top:50% !important;
+  .mobile-story{
+    display:block;
+    background:#08080c;
+    color:#fff;
+    overflow:hidden;
+    border-top:1px solid rgba(255,255,255,.06);
+    border-bottom:1px solid rgba(255,255,255,.06);
   }
 
-  .phone-shell{
-    border-radius:38px !important;
+  .mobile-story-intro{
+    padding:72px 24px 42px;
+    text-align:center;
+    background:
+      radial-gradient(circle at 50% 20%,rgba(113,72,255,.12),transparent 42%),
+      #08080c;
   }
 
-  .phone-inner{
-    border-radius:31px !important;
+  .mobile-story .section-kicker{
+    display:inline-block;
+    color:#a68cff;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.18em;
+    text-transform:uppercase;
   }
 
-  .phone-page{
-    padding:42px 17px 18px !important;
+  .mobile-story-intro h2,
+  .mobile-story-end h2{
+    margin:16px auto 0;
+    font:700 38px/.98 'Space Grotesk',sans-serif;
+    letter-spacing:-.045em;
   }
 
-  .mobile-nav{
-    margin-bottom:42px !important;
+  .mobile-story-intro h2 span,
+  .mobile-story-end h2 span{
+    color:var(--purple-2);
   }
 
-  .mobile-hero h3,
-  .page-two h3{
-    font-size:29px !important;
+  /* collage em fluxo normal: nunca cria tela preta */
+  .mobile-story-collage{
+    position:relative;
+    height:520px;
+    margin:0 0 24px;
+    background:
+      radial-gradient(circle at 20% 25%,rgba(113,72,255,.12),transparent 34%),
+      radial-gradient(circle at 90% 80%,rgba(255,106,0,.08),transparent 30%),
+      #08080c;
   }
 
-  .scroll-progress{
-    right:10px !important;
-    height:100px !important;
+  .mobile-fragment{
+    position:absolute;
+    border:1px solid rgba(255,255,255,.13);
+    background:rgba(18,16,25,.96);
+    box-shadow:0 22px 55px rgba(0,0,0,.36);
+    overflow:hidden;
   }
 
-  /* fragmentos continuam menores no celular */
-  .fragment-browser{width:72vw !important;height:230px !important;left:-26% !important;top:31% !important}
-  .fragment-social{width:175px !important;height:245px !important;right:-24% !important;top:25% !important}
-  .fragment-ads{width:180px !important;height:145px !important;left:-23% !important;bottom:16% !important}
-  .fragment-code{width:230px !important;height:145px !important;right:-31% !important;bottom:13% !important}
-  .fragment-brand{width:140px !important;height:130px !important;left:34% !important;top:19% !important}
+  .mobile-fragment-browser{
+    width:78vw;
+    max-width:335px;
+    height:205px;
+    left:-9vw;
+    top:38px;
+    border-radius:17px;
+    transform:rotate(-4deg);
+  }
 
-  /* Safari: evita filtros pesados durante o scroll */
-  .story-fragment{
-    backdrop-filter:none !important;
-    -webkit-backdrop-filter:none !important;
+  .mobile-fragment-social{
+    width:158px;
+    height:218px;
+    right:-28px;
+    top:82px;
+    border-radius:20px;
+    padding:12px;
+    transform:rotate(4deg);
+  }
+
+  .mobile-fragment-ads{
+    width:170px;
+    height:132px;
+    left:-20px;
+    bottom:46px;
+    border-radius:18px;
+    padding:18px;
+    transform:rotate(3deg);
+  }
+
+  .mobile-fragment-code{
+    width:218px;
+    height:135px;
+    right:-46px;
+    bottom:22px;
+    border-radius:16px;
+    padding:15px;
+    transform:rotate(-3deg);
+  }
+
+  .mobile-fragment-browser .frag-top{height:31px}
+  .mobile-fragment-browser .frag-browser-body{
+    padding:27px 24px;
+    height:calc(100% - 31px);
+  }
+  .mobile-fragment-browser .frag-browser-body strong{height:12px}
+  .mobile-fragment-browser .frag-browser-body small{margin-top:15px}
+  .mobile-fragment-browser .frag-browser-body button{
+    margin-top:17px;
+    padding:7px 12px;
+  }
+
+  .mobile-fragment-social .social-head{
+    grid-template-columns:27px 1fr auto;
+    height:35px;
+    gap:6px;
+  }
+  .mobile-fragment-social .social-avatar{width:25px;height:25px;font-size:10px}
+  .mobile-fragment-social .social-head b{font-size:9px}
+  .mobile-fragment-social .social-head small{font-size:7px}
+  .mobile-fragment-social .social-art{height:118px}
+  .mobile-fragment-social .social-art span{font-size:21px}
+
+  .mobile-fragment-ads .ad-value{font-size:31px}
+  .mobile-fragment-ads p{font-size:8px}
+  .mobile-fragment-code pre{font-size:9px;line-height:1.55}
+
+  /* Celular em bloco natural */
+  .mobile-story-phone-wrap{
+    padding:28px 0 58px;
+    text-align:center;
+    background:
+      radial-gradient(circle at 50% 48%,rgba(113,72,255,.14),transparent 34%),
+      #08080c;
+  }
+
+  .mobile-story-phone{
+    position:relative;
+    width:238px;
+    height:486px;
+    margin:0 auto;
+    animation:mobilePhoneFloat 4.5s ease-in-out infinite;
+  }
+
+  @keyframes mobilePhoneFloat{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-8px)}
+  }
+
+  .mobile-story-phone .phone-shell{
+    width:100%;
+    height:100%;
+    border-radius:40px;
+  }
+
+  .mobile-story-phone .phone-inner{
+    border-radius:32px;
+  }
+
+  .mobile-story-phone .phone-page{
+    padding:45px 18px 20px;
+    opacity:0 !important;
+    transform:translateY(18px) !important;
+    pointer-events:none;
+    transition:opacity .55s ease, transform .55s ease !important;
+  }
+
+  .mobile-story-phone .phone-page.is-active{
+    opacity:1 !important;
+    transform:translateY(0) !important;
+  }
+
+  .mobile-story-phone .mobile-nav{margin-bottom:42px}
+  .mobile-story-phone .mobile-hero h3,
+  .mobile-story-phone .page-two h3{
+    font-size:29px;
+  }
+
+  .mobile-story-dots{
+    display:flex;
+    justify-content:center;
+    gap:7px;
+    margin-top:22px;
+  }
+
+  .mobile-story-dots i{
+    width:6px;
+    height:6px;
+    border-radius:999px;
+    background:#44414d;
+    transition:width .3s ease,background .3s ease;
+  }
+
+  .mobile-story-dots i.is-active{
+    width:22px;
+    background:var(--purple-2);
+  }
+
+  .mobile-story-end{
+    padding:38px 24px 78px;
+    text-align:center;
+    background:
+      radial-gradient(circle at 50% 0%,rgba(255,106,0,.07),transparent 38%),
+      #08080c;
+  }
+
+  .mobile-story-end p{
+    max-width:330px;
+    margin:20px auto 0;
+    color:#9997a5;
+    line-height:1.65;
+    font-size:14px;
+  }
+
+  .mobile-story-end .btn{
+    margin-top:24px;
   }
 }
