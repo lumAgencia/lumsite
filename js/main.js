@@ -47,10 +47,14 @@ function updateScrollStory() {
   if (!story) return;
 
   const rect = story.getBoundingClientRect();
-  const scrollable = Math.max(1, story.offsetHeight - window.innerHeight);
+
+  // Em mobile usamos visualViewport quando disponível.
+  // Isso evita o salto causado pela barra dinâmica do Safari/iPhone.
+  const viewportH = window.visualViewport?.height || window.innerHeight;
+  const scrollable = Math.max(1, story.offsetHeight - viewportH);
   const progress = clamp(-rect.top / scrollable);
-  // Choreography is intentionally split into distinct beats so text, fragments
-  // and the final phone composition never fight for the same visual space.
+
+  // Coreografia ORIGINAL — preservada para desktop.
   const fragmentsIn = clamp((progress - 0.10) / 0.10);
   const assemble = clamp((progress - 0.25) / 0.30);
   const phoneReveal = clamp((progress - 0.38) / 0.18);
@@ -61,6 +65,113 @@ function updateScrollStory() {
   story.style.setProperty('--assemble', assemble.toFixed(4));
   story.style.setProperty('--phone-reveal', phoneReveal.toFixed(4));
   story.style.setProperty('--final-stage', finalStage.toFixed(4));
+
+  // ==========================================================
+  // FIX EXCLUSIVO MOBILE
+  // ==========================================================
+  if (window.matchMedia('(max-width: 650px)').matches) {
+    const vw = window.innerWidth;
+    const vh = viewportH;
+
+    const start = story.querySelector('.scroll-copy-start');
+    const end = story.querySelector('.scroll-copy-end');
+    const browser = story.querySelector('.fragment-browser');
+    const social = story.querySelector('.fragment-social');
+    const ads = story.querySelector('.fragment-ads');
+    const code = story.querySelector('.fragment-code');
+    const brand = story.querySelector('.fragment-brand');
+    const phone = story.querySelector('.phone-assembly');
+    const page1 = story.querySelector('.page-one');
+    const page2 = story.querySelector('.page-two');
+    const page3 = story.querySelector('.page-three');
+    const progressBar = story.querySelector('.scroll-progress span');
+
+    // Texto inicial
+    if (start) {
+      start.style.opacity = String(clamp(1 - progress * 10));
+      start.style.transform =
+        `translate(-50%,-50%) translateY(${-35 * progress}px)`;
+    }
+
+    // Fragmentos: reproduzem numericamente as fórmulas originais.
+    const fragOpacity = fragmentsIn * (1 - assemble);
+
+    if (browser) {
+      browser.style.opacity = String(fragOpacity);
+      browser.style.transform =
+        `translate(${assemble * 0.44 * vw}px, ${assemble * 0.20 * vh}px) ` +
+        `scale(${1 - assemble * 0.62}) rotate(${-7 + assemble * 7}deg)`;
+    }
+
+    if (social) {
+      social.style.opacity = String(fragOpacity);
+      social.style.transform =
+        `translate(${-assemble * 0.34 * vw}px, ${assemble * 0.26 * vh}px) ` +
+        `scale(${1 - assemble * 0.50}) rotate(${8 - assemble * 8}deg)`;
+    }
+
+    if (ads) {
+      ads.style.opacity = String(fragOpacity);
+      ads.style.transform =
+        `translate(${assemble * 0.36 * vw}px, ${-assemble * 0.18 * vh}px) ` +
+        `scale(${1 - assemble * 0.48}) rotate(${5 - assemble * 5}deg)`;
+    }
+
+    if (code) {
+      code.style.opacity = String(fragOpacity);
+      code.style.transform =
+        `translate(${-assemble * 0.36 * vw}px, ${-assemble * 0.17 * vh}px) ` +
+        `scale(${1 - assemble * 0.52}) rotate(${-6 + assemble * 6}deg)`;
+    }
+
+    if (brand) {
+      brand.style.opacity = String(fragOpacity);
+      brand.style.transform =
+        `translate(${(0.5 - assemble) * 0.08 * vw}px, ${assemble * 0.34 * vh}px) ` +
+        `scale(${1 - assemble * 0.50})`;
+    }
+
+    // Celular: mesma sequência visual da versão original mobile.
+    if (phone) {
+      const phoneOpacity = clamp((progress - 0.30) * 8);
+      const phoneScale = 0.72 + phoneReveal * 0.28 - finalStage * 0.14;
+      phone.style.opacity = String(phoneOpacity);
+      phone.style.transform =
+        `translate(-50%, calc(-50% - ${finalStage * 70}px)) scale(${phoneScale})`;
+    }
+
+    // Telas internas do celular.
+    if (page1) {
+      const p1 = clamp(1 - (progress - 0.60) * 8);
+      const p1y = Math.max(0, progress - 0.60) * -120;
+      page1.style.opacity = String(p1);
+      page1.style.transform = `translateY(${p1y}px)`;
+    }
+
+    if (page2) {
+      const in2 = clamp((progress - 0.60) * 9);
+      const out2 = clamp(1 - (progress - 0.78) * 9);
+      const p2 = Math.min(in2, out2);
+      page2.style.opacity = String(p2);
+      page2.style.transform = `translateY(${(1 - in2) * 55}px)`;
+    }
+
+    if (page3) {
+      const p3 = clamp((progress - 0.78) * 9);
+      page3.style.opacity = String(p3);
+      page3.style.transform = `translateY(${(1 - p3) * 55}px)`;
+    }
+
+    // Copy final
+    if (end) {
+      end.style.opacity = String(finalStage);
+      end.style.transform = `translateY(${(1 - finalStage) * 30}px)`;
+    }
+
+    if (progressBar) {
+      progressBar.style.height = `${progress * 100}%`;
+    }
+  }
 }
 
 function onScroll() {
