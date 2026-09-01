@@ -47,14 +47,10 @@ function updateScrollStory() {
   if (!story) return;
 
   const rect = story.getBoundingClientRect();
-
-  // Em mobile usamos visualViewport quando disponível.
-  // Isso evita o salto causado pela barra dinâmica do Safari/iPhone.
-  const viewportH = window.visualViewport?.height || window.innerHeight;
-  const scrollable = Math.max(1, story.offsetHeight - viewportH);
+  const scrollable = Math.max(1, story.offsetHeight - window.innerHeight);
   const progress = clamp(-rect.top / scrollable);
-
-  // Coreografia ORIGINAL — preservada para desktop.
+  // Choreography is intentionally split into distinct beats so text, fragments
+  // and the final phone composition never fight for the same visual space.
   const fragmentsIn = clamp((progress - 0.10) / 0.10);
   const assemble = clamp((progress - 0.25) / 0.30);
   const phoneReveal = clamp((progress - 0.38) / 0.18);
@@ -65,113 +61,6 @@ function updateScrollStory() {
   story.style.setProperty('--assemble', assemble.toFixed(4));
   story.style.setProperty('--phone-reveal', phoneReveal.toFixed(4));
   story.style.setProperty('--final-stage', finalStage.toFixed(4));
-
-  // ==========================================================
-  // FIX EXCLUSIVO MOBILE
-  // ==========================================================
-  if (window.matchMedia('(max-width: 650px)').matches) {
-    const vw = window.innerWidth;
-    const vh = viewportH;
-
-    const start = story.querySelector('.scroll-copy-start');
-    const end = story.querySelector('.scroll-copy-end');
-    const browser = story.querySelector('.fragment-browser');
-    const social = story.querySelector('.fragment-social');
-    const ads = story.querySelector('.fragment-ads');
-    const code = story.querySelector('.fragment-code');
-    const brand = story.querySelector('.fragment-brand');
-    const phone = story.querySelector('.phone-assembly');
-    const page1 = story.querySelector('.page-one');
-    const page2 = story.querySelector('.page-two');
-    const page3 = story.querySelector('.page-three');
-    const progressBar = story.querySelector('.scroll-progress span');
-
-    // Texto inicial
-    if (start) {
-      start.style.opacity = String(clamp(1 - progress * 10));
-      start.style.transform =
-        `translate(-50%,-50%) translateY(${-35 * progress}px)`;
-    }
-
-    // Fragmentos: reproduzem numericamente as fórmulas originais.
-    const fragOpacity = fragmentsIn * (1 - assemble);
-
-    if (browser) {
-      browser.style.opacity = String(fragOpacity);
-      browser.style.transform =
-        `translate(${assemble * 0.44 * vw}px, ${assemble * 0.20 * vh}px) ` +
-        `scale(${1 - assemble * 0.62}) rotate(${-7 + assemble * 7}deg)`;
-    }
-
-    if (social) {
-      social.style.opacity = String(fragOpacity);
-      social.style.transform =
-        `translate(${-assemble * 0.34 * vw}px, ${assemble * 0.26 * vh}px) ` +
-        `scale(${1 - assemble * 0.50}) rotate(${8 - assemble * 8}deg)`;
-    }
-
-    if (ads) {
-      ads.style.opacity = String(fragOpacity);
-      ads.style.transform =
-        `translate(${assemble * 0.36 * vw}px, ${-assemble * 0.18 * vh}px) ` +
-        `scale(${1 - assemble * 0.48}) rotate(${5 - assemble * 5}deg)`;
-    }
-
-    if (code) {
-      code.style.opacity = String(fragOpacity);
-      code.style.transform =
-        `translate(${-assemble * 0.36 * vw}px, ${-assemble * 0.17 * vh}px) ` +
-        `scale(${1 - assemble * 0.52}) rotate(${-6 + assemble * 6}deg)`;
-    }
-
-    if (brand) {
-      brand.style.opacity = String(fragOpacity);
-      brand.style.transform =
-        `translate(${(0.5 - assemble) * 0.08 * vw}px, ${assemble * 0.34 * vh}px) ` +
-        `scale(${1 - assemble * 0.50})`;
-    }
-
-    // Celular: mesma sequência visual da versão original mobile.
-    if (phone) {
-      const phoneOpacity = clamp((progress - 0.30) * 8);
-      const phoneScale = 0.72 + phoneReveal * 0.28 - finalStage * 0.14;
-      phone.style.opacity = String(phoneOpacity);
-      phone.style.transform =
-        `translate(-50%, calc(-50% - ${finalStage * 70}px)) scale(${phoneScale})`;
-    }
-
-    // Telas internas do celular.
-    if (page1) {
-      const p1 = clamp(1 - (progress - 0.60) * 8);
-      const p1y = Math.max(0, progress - 0.60) * -120;
-      page1.style.opacity = String(p1);
-      page1.style.transform = `translateY(${p1y}px)`;
-    }
-
-    if (page2) {
-      const in2 = clamp((progress - 0.60) * 9);
-      const out2 = clamp(1 - (progress - 0.78) * 9);
-      const p2 = Math.min(in2, out2);
-      page2.style.opacity = String(p2);
-      page2.style.transform = `translateY(${(1 - in2) * 55}px)`;
-    }
-
-    if (page3) {
-      const p3 = clamp((progress - 0.78) * 9);
-      page3.style.opacity = String(p3);
-      page3.style.transform = `translateY(${(1 - p3) * 55}px)`;
-    }
-
-    // Copy final
-    if (end) {
-      end.style.opacity = String(finalStage);
-      end.style.transform = `translateY(${(1 - finalStage) * 30}px)`;
-    }
-
-    if (progressBar) {
-      progressBar.style.height = `${progress * 100}%`;
-    }
-  }
 }
 
 function onScroll() {
@@ -359,4 +248,156 @@ if (lumVisual && !window.matchMedia('(prefers-reduced-motion: reduce)').matches)
     gallery.addEventListener('focusout', start);
     start();
   });
+})();
+
+
+/* ==========================================================
+   MOBILE STORY CONTROLLER
+   Camada independente da animação desktop.
+   ========================================================== */
+(function(){
+  const mq = window.matchMedia('(max-width:650px)');
+  const story = document.querySelector('.scroll-story');
+  if (!story) return;
+
+  const clamp01 = n => Math.max(0, Math.min(1, n));
+  const lerp = (a,b,t) => a + (b-a)*t;
+
+  const els = {
+    start: story.querySelector('.scroll-copy-start'),
+    end: story.querySelector('.scroll-copy-end'),
+    browser: story.querySelector('.fragment-browser'),
+    social: story.querySelector('.fragment-social'),
+    ads: story.querySelector('.fragment-ads'),
+    code: story.querySelector('.fragment-code'),
+    brand: story.querySelector('.fragment-brand'),
+    phone: story.querySelector('.phone-assembly'),
+    p1: story.querySelector('.page-one'),
+    p2: story.querySelector('.page-two'),
+    p3: story.querySelector('.page-three'),
+    bar: story.querySelector('.scroll-progress span')
+  };
+
+  const set = (el, prop, value) => {
+    if (!el) return;
+    el.style.setProperty(prop, value, 'important');
+  };
+
+  function clearMobileInline(){
+    Object.values(els).forEach(el => {
+      if (!el) return;
+      ['opacity','transform','display','visibility','height'].forEach(p => {
+        el.style.removeProperty(p);
+      });
+    });
+  }
+
+  function renderMobileStory(){
+    if (!mq.matches) {
+      clearMobileInline();
+      return;
+    }
+
+    const vh = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+    const rect = story.getBoundingClientRect();
+    const total = Math.max(1, story.offsetHeight - vh);
+    const p = clamp01(-rect.top / total);
+
+    // ---------- 1. texto inicial ----------
+    // Fica visível no começo e só termina de sair quando os fragmentos já entraram.
+    const startOut = clamp01((p - 0.08) / 0.13);
+    set(els.start,'display','block');
+    set(els.start,'visibility','visible');
+    set(els.start,'opacity',String(1-startOut));
+    set(els.start,'transform',`translate(-50%,-50%) translateY(${-24*startOut}px)`);
+
+    // ---------- 2. fragmentos ----------
+    // Entram antes do texto terminar de sair e permanecem até o celular estar visível.
+    const fragIn = clamp01((p - 0.10) / 0.10);
+    const fragOut = clamp01((p - 0.31) / 0.13);
+    const fragOpacity = Math.min(fragIn, 1-fragOut);
+
+    const fragData = [
+      [els.browser, -7,  18,  .95],
+      [els.social,   8, -16,  .95],
+      [els.ads,      5,  16,  .95],
+      [els.code,    -6, -14,  .95],
+      [els.brand,    0,   6,  .95]
+    ];
+
+    fragData.forEach(([el,rot,x,scale])=>{
+      if(!el) return;
+      set(el,'display','block');
+      set(el,'visibility','visible');
+      set(el,'opacity',String(Math.max(0,fragOpacity)));
+      const assemble = clamp01((p - 0.20) / 0.18);
+      set(el,'transform',
+        `translate(${x*(1-assemble)}px, ${18*(1-assemble)}px) scale(${lerp(scale,.72,assemble)}) rotate(${rot*(1-assemble)}deg)`
+      );
+    });
+
+    // ---------- 3. celular ----------
+    // Começa a aparecer ANTES dos fragmentos sumirem: nunca há tela preta.
+    const phoneIn = clamp01((p - 0.24) / 0.10);
+    const phoneLift = clamp01((p - 0.78) / 0.12);
+    set(els.phone,'display','block');
+    set(els.phone,'visibility','visible');
+    set(els.phone,'opacity',String(phoneIn));
+    set(els.phone,'transform',
+      `translate(-50%, calc(-50% - ${phoneLift*55}px)) scale(${lerp(.80,1,phoneIn)})`
+    );
+
+    // ---------- 4. telas dentro do celular ----------
+    // Tela 1 -> Tela 2 -> Tela 3.
+    const t2In = clamp01((p - 0.48) / 0.08);
+    const t2Out = clamp01((p - 0.66) / 0.08);
+    const t3In = clamp01((p - 0.66) / 0.08);
+
+    set(els.p1,'display','block');
+    set(els.p1,'opacity',String(1-t2In));
+    set(els.p1,'transform',`translateY(${-24*t2In}px)`);
+
+    set(els.p2,'display','block');
+    set(els.p2,'opacity',String(Math.min(t2In,1-t2Out)));
+    set(els.p2,'transform',`translateY(${(1-t2In)*34 - t2Out*24}px)`);
+
+    set(els.p3,'display','block');
+    set(els.p3,'opacity',String(t3In));
+    set(els.p3,'transform',`translateY(${(1-t3In)*34}px)`);
+
+    // ---------- 5. texto final ----------
+    const endIn = clamp01((p - 0.80) / 0.12);
+    set(els.end,'display','block');
+    set(els.end,'visibility','visible');
+    set(els.end,'opacity',String(endIn));
+    set(els.end,'transform',`translateY(${(1-endIn)*24}px)`);
+
+    // telefone continua visível atrás do fechamento, em vez de desaparecer.
+    if (p > 0.80) {
+      set(els.phone,'opacity',String(1 - endIn*.28));
+    }
+
+    if (els.bar) {
+      set(els.bar,'height',`${p*100}%`);
+    }
+  }
+
+  let raf = 0;
+  const requestRender = () => {
+    if (raf) return;
+    raf = requestAnimationFrame(() => {
+      raf = 0;
+      renderMobileStory();
+    });
+  };
+
+  window.addEventListener('scroll', requestRender, {passive:true});
+  window.addEventListener('resize', requestRender, {passive:true});
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', requestRender, {passive:true});
+  }
+  mq.addEventListener?.('change', requestRender);
+
+  window.addEventListener('load', requestRender, {once:true});
+  requestRender();
 })();
