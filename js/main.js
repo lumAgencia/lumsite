@@ -252,152 +252,53 @@ if (lumVisual && !window.matchMedia('(prefers-reduced-motion: reduce)').matches)
 
 
 /* ==========================================================
-   MOBILE STORY CONTROLLER
-   Camada independente da animação desktop.
+   MOBILE STORY FINAL
+   Sem sticky e sem cálculo de scroll.
+   Troca de telas confiável no Safari/iPhone.
    ========================================================== */
 (function(){
-  const mq = window.matchMedia('(max-width:650px)');
-  const story = document.querySelector('.scroll-story');
-  if (!story) return;
+  const section = document.querySelector('.mobile-story');
+  if (!section) return;
 
-  const clamp01 = n => Math.max(0, Math.min(1, n));
-  const lerp = (a,b,t) => a + (b-a)*t;
+  const pages = [...section.querySelectorAll('.mobile-story-page')];
+  const dots = [...section.querySelectorAll('.mobile-story-dots i')];
+  const phoneWrap = section.querySelector('.mobile-story-phone-wrap');
 
-  const els = {
-    start: story.querySelector('.scroll-copy-start'),
-    end: story.querySelector('.scroll-copy-end'),
-    browser: story.querySelector('.fragment-browser'),
-    social: story.querySelector('.fragment-social'),
-    ads: story.querySelector('.fragment-ads'),
-    code: story.querySelector('.fragment-code'),
-    brand: story.querySelector('.fragment-brand'),
-    phone: story.querySelector('.phone-assembly'),
-    p1: story.querySelector('.page-one'),
-    p2: story.querySelector('.page-two'),
-    p3: story.querySelector('.page-three'),
-    bar: story.querySelector('.scroll-progress span')
-  };
+  if (!pages.length || !phoneWrap) return;
 
-  const set = (el, prop, value) => {
-    if (!el) return;
-    el.style.setProperty(prop, value, 'important');
-  };
+  let timer = null;
+  let current = 0;
 
-  function clearMobileInline(){
-    Object.values(els).forEach(el => {
-      if (!el) return;
-      ['opacity','transform','display','visibility','height'].forEach(p => {
-        el.style.removeProperty(p);
-      });
-    });
+  function show(index){
+    current = index % pages.length;
+    pages.forEach((page,i)=>page.classList.toggle('is-active', i===current));
+    dots.forEach((dot,i)=>dot.classList.toggle('is-active', i===current));
   }
 
-  function renderMobileStory(){
-    if (!mq.matches) {
-      clearMobileInline();
-      return;
-    }
-
-    const vh = window.visualViewport ? window.visualViewport.height : window.innerHeight;
-    const rect = story.getBoundingClientRect();
-    const total = Math.max(1, story.offsetHeight - vh);
-    const p = clamp01(-rect.top / total);
-
-    // ---------- 1. texto inicial ----------
-    // Fica visível no começo e só termina de sair quando os fragmentos já entraram.
-    const startOut = clamp01((p - 0.08) / 0.13);
-    set(els.start,'display','block');
-    set(els.start,'visibility','visible');
-    set(els.start,'opacity',String(1-startOut));
-    set(els.start,'transform',`translate(-50%,-50%) translateY(${-24*startOut}px)`);
-
-    // ---------- 2. fragmentos ----------
-    // Entram antes do texto terminar de sair e permanecem até o celular estar visível.
-    const fragIn = clamp01((p - 0.10) / 0.10);
-    const fragOut = clamp01((p - 0.31) / 0.13);
-    const fragOpacity = Math.min(fragIn, 1-fragOut);
-
-    const fragData = [
-      [els.browser, -7,  18,  .95],
-      [els.social,   8, -16,  .95],
-      [els.ads,      5,  16,  .95],
-      [els.code,    -6, -14,  .95],
-      [els.brand,    0,   6,  .95]
-    ];
-
-    fragData.forEach(([el,rot,x,scale])=>{
-      if(!el) return;
-      set(el,'display','block');
-      set(el,'visibility','visible');
-      set(el,'opacity',String(Math.max(0,fragOpacity)));
-      const assemble = clamp01((p - 0.20) / 0.18);
-      set(el,'transform',
-        `translate(${x*(1-assemble)}px, ${18*(1-assemble)}px) scale(${lerp(scale,.72,assemble)}) rotate(${rot*(1-assemble)}deg)`
-      );
-    });
-
-    // ---------- 3. celular ----------
-    // Começa a aparecer ANTES dos fragmentos sumirem: nunca há tela preta.
-    const phoneIn = clamp01((p - 0.24) / 0.10);
-    const phoneLift = clamp01((p - 0.78) / 0.12);
-    set(els.phone,'display','block');
-    set(els.phone,'visibility','visible');
-    set(els.phone,'opacity',String(phoneIn));
-    set(els.phone,'transform',
-      `translate(-50%, calc(-50% - ${phoneLift*55}px)) scale(${lerp(.80,1,phoneIn)})`
-    );
-
-    // ---------- 4. telas dentro do celular ----------
-    // Tela 1 -> Tela 2 -> Tela 3.
-    const t2In = clamp01((p - 0.48) / 0.08);
-    const t2Out = clamp01((p - 0.66) / 0.08);
-    const t3In = clamp01((p - 0.66) / 0.08);
-
-    set(els.p1,'display','block');
-    set(els.p1,'opacity',String(1-t2In));
-    set(els.p1,'transform',`translateY(${-24*t2In}px)`);
-
-    set(els.p2,'display','block');
-    set(els.p2,'opacity',String(Math.min(t2In,1-t2Out)));
-    set(els.p2,'transform',`translateY(${(1-t2In)*34 - t2Out*24}px)`);
-
-    set(els.p3,'display','block');
-    set(els.p3,'opacity',String(t3In));
-    set(els.p3,'transform',`translateY(${(1-t3In)*34}px)`);
-
-    // ---------- 5. texto final ----------
-    const endIn = clamp01((p - 0.80) / 0.12);
-    set(els.end,'display','block');
-    set(els.end,'visibility','visible');
-    set(els.end,'opacity',String(endIn));
-    set(els.end,'transform',`translateY(${(1-endIn)*24}px)`);
-
-    // telefone continua visível atrás do fechamento, em vez de desaparecer.
-    if (p > 0.80) {
-      set(els.phone,'opacity',String(1 - endIn*.28));
-    }
-
-    if (els.bar) {
-      set(els.bar,'height',`${p*100}%`);
-    }
+  function start(){
+    if (timer) return;
+    show(0);
+    timer = setInterval(()=>{
+      show((current + 1) % pages.length);
+    }, 2300);
   }
 
-  let raf = 0;
-  const requestRender = () => {
-    if (raf) return;
-    raf = requestAnimationFrame(() => {
-      raf = 0;
-      renderMobileStory();
-    });
-  };
-
-  window.addEventListener('scroll', requestRender, {passive:true});
-  window.addEventListener('resize', requestRender, {passive:true});
-  if (window.visualViewport) {
-    window.visualViewport.addEventListener('resize', requestRender, {passive:true});
+  function stop(){
+    if (!timer) return;
+    clearInterval(timer);
+    timer = null;
   }
-  mq.addEventListener?.('change', requestRender);
 
-  window.addEventListener('load', requestRender, {once:true});
-  requestRender();
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if (entry.isIntersecting) start();
+      else stop();
+    });
+  }, {threshold:.25});
+
+  observer.observe(phoneWrap);
+
+  document.addEventListener('visibilitychange',()=>{
+    if (document.hidden) stop();
+  });
 })();
