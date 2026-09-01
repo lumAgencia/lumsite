@@ -2611,14 +2611,13 @@ section.services-section{
 
 
 /* ==========================================================
-   FIX MOBILE DA ANIMAÇÃO — DESKTOP INTACTO
+   MOBILE STORY REBUILD — desktop intocado
    ========================================================== */
 @media (max-width:650px){
   .scroll-story{
+    height:2400px !important;
+    min-height:2400px !important;
     position:relative !important;
-    /* mantém a altura original mobile aprovada */
-    height:3500px !important;
-    min-height:3500px !important;
     overflow:visible !important;
   }
 
@@ -2629,23 +2628,90 @@ section.services-section{
     height:100svh !important;
     min-height:560px !important;
     overflow:hidden !important;
+    display:block !important;
   }
 
-  /* No iPhone os cálculos passam a vir do JS;
-     transition:none evita atraso entre o dedo e a animação. */
+  /* neutraliza as fórmulas desktop no mobile;
+     o JS mobile controla tudo diretamente */
   .scroll-copy-start,
   .scroll-copy-end,
   .story-fragment,
   .phone-assembly,
   .phone-page{
     transition:none !important;
-    will-change:transform,opacity;
+    will-change:transform,opacity !important;
   }
 
-  .scroll-copy-start,
-  .scroll-copy-end,
-  .story-fragment,
+  .scroll-copy-start{
+    width:calc(100% - 28px) !important;
+    left:50% !important;
+    top:50% !important;
+    text-align:center !important;
+  }
+
+  .scroll-copy-start h2{
+    font-size:36px !important;
+  }
+
+  .scroll-copy-end{
+    width:calc(100% - 34px) !important;
+    left:17px !important;
+    top:auto !important;
+    bottom:7% !important;
+    text-align:center !important;
+  }
+
+  .scroll-copy-end h2{
+    font-size:30px !important;
+  }
+
+  .scroll-copy-end p{
+    display:none !important;
+  }
+
   .phone-assembly{
-    visibility:visible !important;
+    width:230px !important;
+    height:470px !important;
+    left:50% !important;
+    top:50% !important;
+  }
+
+  .phone-shell{
+    border-radius:38px !important;
+  }
+
+  .phone-inner{
+    border-radius:31px !important;
+  }
+
+  .phone-page{
+    padding:42px 17px 18px !important;
+  }
+
+  .mobile-nav{
+    margin-bottom:42px !important;
+  }
+
+  .mobile-hero h3,
+  .page-two h3{
+    font-size:29px !important;
+  }
+
+  .scroll-progress{
+    right:10px !important;
+    height:100px !important;
+  }
+
+  /* fragmentos continuam menores no celular */
+  .fragment-browser{width:72vw !important;height:230px !important;left:-26% !important;top:31% !important}
+  .fragment-social{width:175px !important;height:245px !important;right:-24% !important;top:25% !important}
+  .fragment-ads{width:180px !important;height:145px !important;left:-23% !important;bottom:16% !important}
+  .fragment-code{width:230px !important;height:145px !important;right:-31% !important;bottom:13% !important}
+  .fragment-brand{width:140px !important;height:130px !important;left:34% !important;top:19% !important}
+
+  /* Safari: evita filtros pesados durante o scroll */
+  .story-fragment{
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
   }
 }
