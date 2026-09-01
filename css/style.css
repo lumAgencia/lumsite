@@ -2608,3 +2608,44 @@ section.services-section{
     width:min(74vw,270px) !important;
   }
 }
+
+
+/* ==========================================================
+   FIX MOBILE DA ANIMAÇÃO — DESKTOP INTACTO
+   ========================================================== */
+@media (max-width:650px){
+  .scroll-story{
+    position:relative !important;
+    /* mantém a altura original mobile aprovada */
+    height:3500px !important;
+    min-height:3500px !important;
+    overflow:visible !important;
+  }
+
+  .scroll-stage{
+    position:-webkit-sticky !important;
+    position:sticky !important;
+    top:0 !important;
+    height:100svh !important;
+    min-height:560px !important;
+    overflow:hidden !important;
+  }
+
+  /* No iPhone os cálculos passam a vir do JS;
+     transition:none evita atraso entre o dedo e a animação. */
+  .scroll-copy-start,
+  .scroll-copy-end,
+  .story-fragment,
+  .phone-assembly,
+  .phone-page{
+    transition:none !important;
+    will-change:transform,opacity;
+  }
+
+  .scroll-copy-start,
+  .scroll-copy-end,
+  .story-fragment,
+  .phone-assembly{
+    visibility:visible !important;
+  }
+}
