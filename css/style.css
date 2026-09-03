@@ -3615,3 +3615,78 @@ body::selection{background:#FFD60A;color:#5B21B6}
   .lum-centered-hero .lum-hero-art{display:none!important;}
   .lum-centered-copy,.lum-hero-brand{text-align:center!important;align-items:center!important;}
 }
+
+/* =========================================================
+   LUM — AJUSTE V6 (03/09/2026)
+   Restaura o fundo amarelo forte nas seções claras.
+   Mantém a animação de rolagem em roxo e corrige contraste.
+   ========================================================= */
+
+/* Seções claras voltam ao Golden Yellow da identidade */
+.section:not(.process-section):not(.faq-section),
+.market-proof-section,
+.lum-360-section{
+  background:#FFD60A!important;
+  background-image:none!important;
+}
+
+/* Texto sobre o amarelo: roxo profundo para contraste */
+.section:not(.process-section):not(.faq-section) h2,
+.section:not(.process-section):not(.faq-section) h3,
+.section:not(.process-section):not(.faq-section) h4,
+.section:not(.process-section):not(.faq-section) p,
+.section:not(.process-section):not(.faq-section) li,
+.market-proof-section h2,.market-proof-section h3,.market-proof-section p,
+.lum-360-section h2,.lum-360-section h3,.lum-360-section p{
+  color:#2F1067!important;
+}
+
+/* Cards continuam roxos sobre amarelo, com conteúdo bem legível */
+.service-card,
+.lum-360-grid article,
+.problem-grid article,
+.mkt-service-list article,
+.marketing-capabilities>div,
+.package-card,.package-option,
+.market-proof-grid .market-stat,
+.project-card,.project-ui{
+  background:linear-gradient(155deg,#4C1A9B 0%,#351171 100%)!important;
+  border-color:rgba(47,16,103,.22)!important;
+}
+.service-card h3,.service-card p,.service-card li,
+.lum-360-grid article h3,.lum-360-grid article p,
+.problem-grid article h3,.problem-grid article p,
+.mkt-service-list article h3,.mkt-service-list article p,
+.marketing-capabilities>div h3,.marketing-capabilities>div p,
+.package-card h3,.package-card p,.package-option h3,.package-option p,
+.market-proof-grid .market-stat h3,.market-proof-grid .market-stat p{
+  color:#fff!important;
+}
+.service-card a,.service-card li:before,
+.lum-360-grid article span,
+.problem-grid article span,
+.mkt-service-list article span,
+.marketing-capabilities>div span{
+  color:#FFD60A!important;
+}
+
+/* Botões sobre amarelo: roxo para não desaparecer */
+.section:not(.process-section):not(.faq-section) .btn-primary,
+.market-proof-section .btn-primary,
+.lum-360-section .btn-primary{
+  background:#351171!important;
+  color:#fff!important;
+  border-color:#351171!important;
+}
+.section:not(.process-section):not(.faq-section) .btn-primary:hover,
+.market-proof-section .btn-primary:hover,
+.lum-360-section .btn-primary:hover{
+  background:#2F1067!important;
+  color:#FFD60A!important;
+}
+
+/* A experiência de rolagem continua ROXA, como solicitado */
+.scroll-story,.scroll-stage{
+  background:#5B21B6!important;
+  background-image:linear-gradient(145deg,#5B21B6 0%,#3A147A 100%)!important;
+}
