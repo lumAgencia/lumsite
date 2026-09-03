@@ -67,8 +67,8 @@ function onScroll() {
   const header = document.querySelector('.site-header');
   if (header) {
     header.style.background = window.scrollY > 40
-      ? 'rgba(9,9,13,.92)'
-      : 'rgba(9,9,13,.72)';
+      ? 'rgba(91,33,182,.96)'
+      : 'rgba(91,33,182,.90)';
   }
 
   if (!ticking) {
