@@ -3691,65 +3691,31 @@ body::selection{background:#FFD60A;color:#5B21B6}
   background-image:linear-gradient(145deg,#5B21B6 0%,#3A147A 100%)!important;
 }
 
-/* =========================================================
-   LUM — AJUSTE V7: CONTRASTE DOS CARDS DE PACOTES
-   Mantém identidade roxo + amarelo; melhora leitura.
-   ========================================================= */
-.package-card,
-.package-option{
-  color:#FFFFFF!important;
-}
-.package-card h3,
-.package-card p,
-.package-card li,
-.package-option strong,
-.package-option p,
-.package-option em{
-  color:#FFFFFF!important;
-  opacity:1!important;
-}
-.package-label,
-.package-number,
-.package-icon,
-.package-card li::before,
-.package-option span{
-  color:#FFD60A!important;
-  opacity:1!important;
-}
-.package-card li::before{
-  background:#FFD60A!important;
-  box-shadow:0 0 10px rgba(255,214,10,.28)!important;
-}
-.package-icon{
-  background:rgba(255,214,10,.10)!important;
-  border-color:rgba(255,214,10,.28)!important;
-}
-.package-card::before{
-  background:radial-gradient(circle,rgba(255,214,10,.08),transparent 70%)!important;
-}
-.package-card .package-open{
-  color:#FFFFFF!important;
-}
-
-/* LUM — ajuste SOMENTE de cores dos cards */
-.package-card {
+/* LUM — SOMENTE CORES DOS 3 CARDS DE PACOTES */
+.section.package-section .package-card {
   background: #5B21B6 !important;
 }
 
-.package-card h1,
-.package-card h2,
-.package-card h3,
-.package-card h4,
-.package-card p,
-.package-card li,
-.package-card span:not(.package-label):not(.package-number):not(.package-icon) {
+.section.package-section .package-card h3,
+.section.package-section .package-card p,
+.section.package-section .package-card li {
   color: #FFFFFF !important;
+  opacity: 1 !important;
 }
 
-.package-card .package-label,
-.package-card .package-number,
-.package-card .package-icon,
-.package-card li::before {
+.section.package-section .package-card .package-label,
+.section.package-section .package-card .package-number,
+.section.package-section .package-card .package-icon {
   color: #FFD60A !important;
+  opacity: 1 !important;
+}
+
+.section.package-section .package-card li::before {
+  background: #FFD60A !important;
+  box-shadow: none !important;
+}
+
+.section.package-section .package-card .package-open {
+  color: #FFFFFF !important;
 }
 
