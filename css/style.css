@@ -3730,3 +3730,38 @@ body::selection{background:#FFD60A;color:#5B21B6}
 .package-card .package-open{
   color:#FFFFFF!important;
 }
+
+/* =========================================================
+   LUM — AJUSTE V8: LEGIBILIDADE DOS CARDS (06/09/2026)
+   Corrige regras globais que sobrescreviam o contraste.
+   ========================================================= */
+.package-section .package-card h3{
+  color:#FFFFFF!important;
+  opacity:1!important;
+  text-shadow:0 1px 1px rgba(0,0,0,.10);
+}
+.package-section .package-card p,
+.package-section .package-card li{
+  color:#F7F3FF!important;
+  opacity:1!important;
+}
+.package-section .package-card .package-label,
+.package-section .package-card .package-number,
+.package-section .package-card .package-icon{
+  color:#FFD60A!important;
+  opacity:1!important;
+}
+.package-section .package-card li::before{
+  background:#FFD60A!important;
+  box-shadow:0 0 8px rgba(255,214,10,.22)!important;
+}
+.package-section .package-card .package-open{
+  color:#FFFFFF!important;
+  background:#17151C!important;
+  border-color:rgba(255,255,255,.16)!important;
+}
+.package-section .package-card .package-open:hover{
+  color:#FFD60A!important;
+  background:#211D2A!important;
+  border-color:rgba(255,214,10,.45)!important;
+}
