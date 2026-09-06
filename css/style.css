@@ -2897,212 +2897,6 @@ body.package-modal-open{
   }
 }
 
-/* =========================================================
-   LUM — IDENTIDADE 2026: DEEP PURPLE + GOLDEN YELLOW
-   Paleta principal: #5B21B6 / #FFD60A
-   ========================================================= */
-:root{
-  --bg:#5B21B6;
-  --bg-soft:#5B21B6;
-  --panel:#5B21B6;
-  --purple:#5B21B6;
-  --purple-2:#FFD60A;
-  --purple-dark:#5B21B6;
-  --orange:#FFD60A;
-  --orange-2:#FFD60A;
-  --white:#fff;
-  --muted:rgba(255,255,255,.78);
-  --line:rgba(255,214,10,.28);
-  --metal:rgba(255,255,255,.78);
-  --shadow:0 24px 70px rgba(91,33,182,.34);
-}
-
-html,body,.marketing-page{background:#5B21B6;color:#fff}
-body::selection{background:#FFD60A;color:#5B21B6}
-
-.site-header,.marketing-page .site-header{
-  background:rgba(91,33,182,.93)!important;
-  border-bottom-color:rgba(255,214,10,.22)!important;
-}
-.brand-mark{
-  background:#FFD60A!important;
-  color:#5B21B6!important;
-  box-shadow:0 0 28px rgba(255,214,10,.35)!important;
-}
-.brand-text span,.main-nav a:hover{color:#FFD60A!important}
-.main-nav a{color:#fff!important}
-
-.btn-primary,.btn-light{
-  background:#FFD60A!important;
-  color:#5B21B6!important;
-  border-color:#FFD60A!important;
-  box-shadow:0 14px 36px rgba(255,214,10,.24)!important;
-}
-.btn-primary:hover,.btn-light:hover{box-shadow:0 18px 42px rgba(255,214,10,.38)!important}
-.btn-ghost,.btn-outline-light{
-  background:transparent!important;
-  color:#FFD60A!important;
-  border-color:#FFD60A!important;
-}
-.btn-ghost:hover,.btn-outline-light:hover{background:#FFD60A!important;color:#5B21B6!important}
-
-.hero,.lum-centered-hero,.mkt-hero{
-  background:#5B21B6!important;
-}
-.hero:before{background:linear-gradient(90deg,transparent,#FFD60A,transparent)!important}
-.glow-one,.glow-two{
-  background:rgba(255,214,10,.22)!important;
-  filter:blur(100px)!important;
-}
-.hero h1 strong,.mkt-hero-copy h1 strong,.section-heading h2 span,
-.hero .section-kicker,.eyebrow,.section-kicker{
-  color:#FFD60A!important;
-  -webkit-text-stroke:0!important;
-  text-shadow:none!important;
-}
-.eyebrow span,.track i{background:#FFD60A!important;box-shadow:0 0 14px rgba(255,214,10,.75)!important}
-.hero-copy>p,.section-heading p,.mkt-hero-copy>p:not(.eyebrow){color:rgba(255,255,255,.82)!important}
-.hero-proof{border-top-color:rgba(255,214,10,.28)!important}
-.hero-proof b{color:#FFD60A!important}.hero-proof span{color:rgba(255,255,255,.7)!important}
-.tech-strip{background:#FFD60A!important;border-color:#FFD60A!important}
-.tech-strip .track{color:#5B21B6!important}.tech-strip .track i{background:#5B21B6!important;box-shadow:none!important}
-
-.browser-card,.phone-card,.floating-chip{
-  background:#5B21B6!important;
-  border-color:#FFD60A!important;
-  box-shadow:0 22px 55px rgba(58,13,125,.32),0 0 30px rgba(255,214,10,.14)!important;
-}
-.browser-top,.browser-body,.phone-screen{background:#5B21B6!important}
-.browser-top{border-bottom-color:rgba(255,214,10,.28)!important}
-.browser-top span,.browser-top span:first-child,.browser-top span:nth-child(2){background:#FFD60A!important}
-.mini-label,.mini-btn,.phone-button{background:#FFD60A!important}
-.mini-title.short{background:#FFD60A!important}.mini-text{background:rgba(255,255,255,.52)!important}
-.phone-badge,.chip-2,.chip-3{color:#FFD60A!important}
-
-/* Áreas claras/douradas para o amarelo realmente participar do layout */
-.section:not(.process-section):not(.faq-section),
-.lum-360-section,.market-proof-section{
-  background:#FFD60A!important;
-  color:#5B21B6!important;
-}
-.section:not(.process-section):not(.faq-section) .section-kicker,
-.section:not(.process-section):not(.faq-section) .section-heading h2,
-.section:not(.process-section):not(.faq-section) .section-heading h2 span,
-.lum-360-section .section-kicker,.lum-360-section h2,.market-proof-section h2{
-  color:#5B21B6!important;
-}
-.section:not(.process-section):not(.faq-section) .section-heading p,
-.lum-360-section p,.market-proof-section p{color:rgba(91,33,182,.78)!important}
-
-.service-card,.lum-360-grid article,.problem-grid article,.mkt-service-list article,
-.marketing-capabilities>div,.package-card,.package-option{
-  background:#5B21B6!important;
-  border-color:#5B21B6!important;
-  color:#fff!important;
-  box-shadow:none!important;
-}
-.service-card:before{background:rgba(255,214,10,.18)!important}
-.service-card.featured,.service-card:hover{border-color:#FFD60A!important}
-.service-icon,.featured .service-icon{
-  background:#FFD60A!important;
-  border-color:#FFD60A!important;
-  color:#5B21B6!important;
-}
-.service-card h3,.service-card a,.service-card li:before,.lum-360-grid span,.lum-flow i,
-.problem-grid span,.mkt-service-list span,.marketing-capabilities span{
-  color:#FFD60A!important;
-}
-.service-card p,.service-card li,.lum-360-grid p,.problem-grid p,.mkt-service-list p,
-.marketing-capabilities small{color:rgba(255,255,255,.8)!important}
-.card-number{color:rgba(255,214,10,.66)!important}
-.lum-360-grid,.lum-flow{border-color:#5B21B6!important}
-
-.process-section,.faq-section,.extras-section,.cta-section,
-.founder-dev-section,.founder-marketing-section,.founder-patricia-section,
-.mkt-intro,.mkt-problems,.mkt-services,.mkt-case,.mkt-work,.mkt-testimonials,.mkt-cta,
-.site-footer{
-  background:#5B21B6!important;
-  color:#fff!important;
-  border-color:rgba(255,214,10,.25)!important;
-}
-.process-item:before{background:#FFD60A!important;box-shadow:0 0 18px rgba(255,214,10,.75)!important}
-.process-item span,.extra-item>span,.faq-item button b,.cta-inner h2 span,
-.founder-mini-card span,.founder-marketing-banner span,.role-number,
-.mkt-person span,.patricia-portfolio-link b{
-  color:#FFD60A!important;
-}
-.process-item p,.extra-item p,.faq-answer p,.cta-inner p,.founder-lead,
-.founder-role small,.mkt-intro-text{color:rgba(255,255,255,.78)!important}
-
-/* Projetos / portfolios */
-.project-card,.project-ui{
-  background:#5B21B6!important;
-  border-color:#FFD60A!important;
-}
-.project-purple .project-preview,.project-orange .project-preview,.project-dark .project-preview{
-  background:#FFD60A!important;
-}
-.project-ui{box-shadow:0 24px 50px rgba(91,33,182,.28)!important}
-.project-ui span{background:#FFD60A!important}
-.project-ui h4,.project-ui p{color:#fff!important}
-.project-ui button{background:#FFD60A!important;color:#5B21B6!important}
-.project-info span,.project-info b{color:#FFD60A!important}
-
-/* Ecossistema / animação: somente troca cromática, sem alterar comportamento */
-.orbit-a,.orbit-b,.orbit-c,.ecosystem-orbit,.orbit{
-  border-color:rgba(255,214,10,.35)!important;
-}
-.eco-card,.eco-core,.eco-node,.eco-result{
-  background:#5B21B6!important;
-  border-color:rgba(255,214,10,.42)!important;
-  box-shadow:0 22px 55px rgba(58,13,125,.28),0 0 24px rgba(255,214,10,.10)!important;
-}
-.eco-index,.eco-core strong span,.eco-core small,.eco-result strong,.eco-node,.eco-node *{
-  color:#FFD60A!important;
-}
-.eco-node small,.eco-core-kicker,.eco-result span{color:rgba(255,255,255,.75)!important}
-
-/* Fundadores e Marketing */
-.founder-marketing-section::before{background:radial-gradient(circle,rgba(255,214,10,.20),transparent 68%)!important}
-.founder-photo,.founder-mini-card,.mkt-hero-photo,.mkt-photo-note{
-  border-color:rgba(255,214,10,.38)!important;
-}
-.founder-mini-card,.mkt-photo-note{background:rgba(91,33,182,.92)!important}
-.photo-tag{background:#FFD60A!important;color:#5B21B6!important;border-color:#FFD60A!important}
-.founder-role{border-color:rgba(255,214,10,.30)!important}
-.role-number{border-color:#FFD60A!important}
-.patricia-portfolio-link{
-  background:#FFD60A!important;
-  border-color:#FFD60A!important;
-  color:#5B21B6!important;
-}
-.patricia-portfolio-link span,.patricia-portfolio-link b{color:#5B21B6!important}
-.patricia-portfolio-link:hover{background:#FFD60A!important;border-color:#5B21B6!important}
-.history-note{border-left-color:#FFD60A!important;background:rgba(255,214,10,.10)!important}
-
-/* Modais/pacotes */
-.package-modal,.package-modal-panel{background:rgba(91,33,182,.98)!important}
-.package-modal-panel{border-color:#FFD60A!important}
-.package-close,.package-choice,.package-option{border-color:rgba(255,214,10,.35)!important}
-.package-choice:hover,.package-option:hover{border-color:#FFD60A!important}
-
-/* Footer */
-.site-footer{border-top:1px solid #FFD60A!important}
-.footer-grid h4,.footer-grid a:hover{color:#FFD60A!important}
-.footer-grid a:not(.brand),.footer-grid>div:first-child p,.footer-bottom{color:rgba(255,255,255,.72)!important}
-.footer-bottom{border-top-color:rgba(255,214,10,.28)!important}
-
-/* Mobile menu */
-@media(max-width:980px){
-  .main-nav{background:#5B21B6!important;border-color:#FFD60A!important}
-}
-
-
-/* =========================================================
-   LUM — AJUSTE FINAL DE CONTRASTE + LOGO 2026
-   Referência aprovada: Deep Purple #5B21B6 + Golden Yellow #FFD60A
-   ========================================================= */
-
 /* LOGO: LUM amarelo + ponto roxo, em todas as aparições */
 .site-header .brand-word,
 .footer-brand .brand-word,
@@ -3205,24 +2999,6 @@ body::selection{background:#FFD60A;color:#5B21B6}
 }
 .market-credibility-note span,.market-credibility-note a{color:#5B21B6!important}
 .market-credibility-note p{color:#3E205F!important}
-
-/* Cards: roxo aprovado + amarelo; nada de lilás antigo */
-.service-card,.lum-360-grid article,.problem-grid article,
-.mkt-service-list article,.marketing-capabilities>div,
-.package-card,.package-option{
-  background:#5B21B6!important;
-  border-color:rgba(255,214,10,.40)!important;
-  color:#fff!important;
-}
-.service-card h3,.lum-360-grid h3,.problem-grid h3,
-.mkt-service-list h3,.marketing-capabilities h3,
-.package-card h3,.package-option h3{color:#fff!important}
-.service-card p,.service-card li,.lum-360-grid p,.problem-grid p,
-.mkt-service-list p,.marketing-capabilities p,.marketing-capabilities small,
-.package-card p,.package-option p{
-  color:#fff!important;
-  opacity:.90!important;
-}
 .service-card a,.service-card li:before,.service-icon,
 .lum-360-grid span,.problem-grid span,.mkt-service-list span,
 .marketing-capabilities span{color:#FFD60A!important}
@@ -3317,127 +3093,6 @@ body::selection{background:#FFD60A;color:#5B21B6}
 }
 
 
-/* =========================================================
-   LUM — REFINO VISUAL V4
-   Mantém o hero centralizado e equaliza as duas assinaturas LUM.
-   Base: Deep Purple #5B21B6 + Golden Yellow #FFD60A
-   ========================================================= */
-:root{
-  --lum-purple:#5B21B6;
-  --lum-yellow:#FFD60A;
-  --lum-purple-deep:#2F1067;
-  --lum-purple-mid:#44178E;
-  --lum-cream:#FFF9E8;
-}
-
-/* NÃO alterar a centralização já aprovada */
-.lum-centered-hero{
-  text-align:center!important;
-  align-items:center!important;
-  justify-content:center!important;
-}
-.lum-centered-inner,
-.lum-hero-brand,
-.lum-centered-copy{
-  align-items:center!important;
-  text-align:center!important;
-  margin-left:auto!important;
-  margin-right:auto!important;
-}
-.lum-centered-copy h1,
-.lum-centered-copy>p{
-  text-align:center!important;
-  margin-left:auto!important;
-  margin-right:auto!important;
-}
-.lum-centered-actions{justify-content:center!important}
-
-/* As duas logos ficam idênticas: LUM amarelo + ponto roxo */
-.site-header .brand-word,
-.footer-brand .brand-word,
-.lum-hero-logo{
-  color:var(--lum-yellow)!important;
-  -webkit-text-fill-color:var(--lum-yellow)!important;
-  text-shadow:none!important;
-}
-.site-header .brand-word>span,
-.footer-brand .brand-word>span,
-.lum-hero-logo>span{
-  color:var(--lum-purple)!important;
-  -webkit-text-fill-color:var(--lum-purple)!important;
-  text-shadow:none!important;
-}
-/* ponto do logo central precisa continuar perceptível sobre fundo roxo */
-.lum-hero-logo>span{
-  text-shadow:0 0 0 2px rgba(255,255,255,.20),0 4px 18px rgba(18,8,42,.28)!important;
-}
-
-/* Menos “estourado”: fundo roxo mais profundo, mas 100% dentro da nova identidade */
-.hero,.lum-centered-hero,.mkt-hero{
-  background:
-    radial-gradient(circle at 78% 24%,rgba(91,33,182,.40),transparent 38%),
-    radial-gradient(circle at 24% 68%,rgba(91,33,182,.24),transparent 42%),
-    linear-gradient(135deg,var(--lum-purple-deep) 0%,var(--lum-purple-mid) 50%,#351171 100%)!important;
-}
-.site-header,.marketing-page .site-header{
-  background:rgba(47,16,103,.93)!important;
-  border-bottom:1px solid rgba(255,214,10,.20)!important;
-  backdrop-filter:blur(16px)!important;
-}
-
-/* Amarelo com presença sem virar “parede de luz” */
-.btn-primary,.btn-light{
-  background:var(--lum-yellow)!important;
-  color:#351171!important;
-  border-color:rgba(255,214,10,.72)!important;
-  box-shadow:0 10px 24px rgba(255,214,10,.14)!important;
-}
-.btn-primary:hover,.btn-light:hover{
-  background:#FFE46B!important;
-  box-shadow:0 12px 26px rgba(255,214,10,.18)!important;
-}
-
-/* Áreas claras mais confortáveis para leitura */
-.section:not(.process-section):not(.faq-section),
-.market-proof-section,
-.lum-360-section{
-  background:linear-gradient(180deg,#FFF9E8 0%,#FFF4C7 100%)!important;
-}
-
-/* Cards roxos menos saturados sem reintroduzir o roxo antigo */
-.service-card,.lum-360-grid article,.problem-grid article,
-.mkt-service-list article,.marketing-capabilities>div,
-.package-card,.package-option,
-.market-proof-grid .market-stat,
-.project-card,.project-ui{
-  background:linear-gradient(155deg,#4C1A9B 0%,#351171 100%)!important;
-  border-color:rgba(255,214,10,.28)!important;
-  box-shadow:0 14px 34px rgba(47,16,103,.12)!important;
-}
-
-/* Seções escuras refinadas: sem preto puro e sem roxos antigos */
-.process-section,.faq-section,.extras-section,.cta-section,
-.founder-dev-section,.founder-marketing-section,.founder-patricia-section,
-.mkt-intro,.mkt-problems,.mkt-services,.mkt-case,.mkt-work,
-.mkt-testimonials,.mkt-cta,.site-footer{
-  background:linear-gradient(145deg,#351171 0%,#2F1067 100%)!important;
-}
-
-/* Tipografia: contraste mais confortável e consistente */
-.lum-centered-copy p,
-.process-section p,.faq-section p,.extras-section p,.cta-section p,
-.founder-dev-section p,.founder-marketing-section p,.founder-patricia-section p,
-.mkt-intro p,.mkt-problems p,.mkt-services p,.mkt-case p,.mkt-work p,
-.mkt-testimonials p,.mkt-cta p,.site-footer p,
-.process-item p,.extra-item p,.faq-answer p,.founder-lead,.mkt-intro-text,.mkt-work-note{
-  color:rgba(255,255,255,.91)!important;
-  opacity:1!important;
-}
-.section:not(.process-section):not(.faq-section) p,
-.market-proof-section p,.lum-360-section p{
-  color:#3F215E!important;
-}
-
 /* Headline: amarelo forte só na frase-chave; restante branco suave */
 .lum-centered-copy h1{color:#FAF8FF!important}
 .lum-centered-copy h1 strong,
@@ -3476,133 +3131,6 @@ body::selection{background:#FFD60A;color:#5B21B6}
   .main-nav{background:rgba(47,16,103,.98)!important}
 }
 
-/* =========================================================
-   LUM — AJUSTE V5 (03/09/2026)
-   Pedido: remover arte lateral do hero, restaurar amarelo forte,
-   corrigir legibilidade e manter fundo roxo na animação de rolagem.
-   ========================================================= */
-
-/* Remove completamente o elemento gráfico lateral do hero sem tocar na estrutura/centralização */
-.lum-centered-hero .lum-hero-art{
-  display:none!important;
-}
-
-/* Preserva a centralização já aprovada */
-.lum-centered-hero,
-.lum-centered-inner,
-.lum-hero-brand,
-.lum-centered-copy{
-  text-align:center!important;
-  align-items:center!important;
-}
-.lum-centered-inner,
-.lum-hero-brand,
-.lum-centered-copy,
-.lum-centered-copy h1,
-.lum-centered-copy>p{
-  margin-left:auto!important;
-  margin-right:auto!important;
-}
-.lum-centered-actions{justify-content:center!important;}
-
-/* Amarelo original da nova identidade, sem redução de intensidade */
-:root{
-  --lum-yellow:#FFD60A;
-}
-.site-header .brand-word,
-.footer-brand .brand-word,
-.lum-hero-logo,
-.lum-centered-copy h1 strong,
-.mkt-hero-copy h1 strong,
-.cta-inner h2 span,
-.service-card a,
-.process-item span,
-.extra-item>span,
-.role-number,
-.mkt-person span{
-  color:#FFD60A!important;
-  -webkit-text-fill-color:#FFD60A!important;
-}
-.site-header .brand-word>span,
-.footer-brand .brand-word>span,
-.lum-hero-logo>span{
-  color:#5B21B6!important;
-  -webkit-text-fill-color:#5B21B6!important;
-}
-
-/* Legibilidade: textos claros em fundos fortes */
-.hero p,.lum-centered-copy>p,
-.process-section p,.faq-section p,.extras-section p,.cta-section p,
-.founder-dev-section p,.founder-marketing-section p,.founder-patricia-section p,
-.mkt-intro p,.mkt-problems p,.mkt-services p,.mkt-case p,.mkt-work p,
-.mkt-testimonials p,.mkt-cta p,.site-footer p,
-.scroll-copy p{
-  color:rgba(255,255,255,.94)!important;
-  opacity:1!important;
-}
-.hero h1,.lum-centered-copy h1,
-.process-section h2,.faq-section h2,.extras-section h2,.cta-section h2,
-.scroll-copy h2{
-  color:#fff!important;
-}
-
-/* Botões: amarelo forte + texto escuro para leitura */
-.btn-primary,.btn-light{
-  background:#FFD60A!important;
-  color:#2F1067!important;
-  border-color:#FFD60A!important;
-  box-shadow:0 10px 24px rgba(0,0,0,.14)!important;
-}
-.btn-primary:hover,.btn-light:hover{
-  background:#FFE047!important;
-  color:#2F1067!important;
-}
-
-/* ANIMAÇÃO DE ROLAGEM: manter fundo roxo em toda a experiência */
-.scroll-story,
-.scroll-stage{
-  background:#5B21B6!important;
-  background-image:linear-gradient(145deg,#5B21B6 0%,#3A147A 100%)!important;
-}
-.scroll-stage-grid{
-  opacity:.18!important;
-}
-.scroll-orb-purple{
-  background:#5B21B6!important;
-  opacity:.20!important;
-}
-.scroll-orb-orange{
-  background:#FFD60A!important;
-  opacity:.08!important;
-}
-.scroll-copy h2 span{
-  color:#FFD60A!important;
-}
-
-/* Componentes da animação: nova paleta e texto com contraste */
-.fragment-card,
-.fragment-browser,
-.fragment-ads,
-.fragment-code,
-.fragment-brand,
-.lum-panel,
-.panel-web,
-.panel-brand,
-.panel-growth{
-  border-color:rgba(255,214,10,.24)!important;
-}
-.fragment-code pre,
-.fragment-brand small,
-.tiny-label,
-.lum-caption{
-  color:rgba(255,255,255,.72)!important;
-}
-.fragment-code pre span,
-.fragment-code pre b,
-.fragment-code pre em{
-  color:#FFD60A!important;
-}
-
 /* Evita amarelo sobre fundo claro sem contraste */
 .section:not(.process-section):not(.faq-section) h2,
 .section:not(.process-section):not(.faq-section) h3,
@@ -3615,12 +3143,6 @@ body::selection{background:#FFD60A;color:#5B21B6}
   .lum-centered-hero .lum-hero-art{display:none!important;}
   .lum-centered-copy,.lum-hero-brand{text-align:center!important;align-items:center!important;}
 }
-
-/* =========================================================
-   LUM — AJUSTE V6 (03/09/2026)
-   Restaura o fundo amarelo forte nas seções claras.
-   Mantém a animação de rolagem em roxo e corrige contraste.
-   ========================================================= */
 
 /* Seções claras voltam ao Golden Yellow da identidade */
 .section:not(.process-section):not(.faq-section),
@@ -3639,28 +3161,6 @@ body::selection{background:#FFD60A;color:#5B21B6}
 .market-proof-section h2,.market-proof-section h3,.market-proof-section p,
 .lum-360-section h2,.lum-360-section h3,.lum-360-section p{
   color:#2F1067!important;
-}
-
-/* Cards continuam roxos sobre amarelo, com conteúdo bem legível */
-.service-card,
-.lum-360-grid article,
-.problem-grid article,
-.mkt-service-list article,
-.marketing-capabilities>div,
-.package-card,.package-option,
-.market-proof-grid .market-stat,
-.project-card,.project-ui{
-  background:linear-gradient(155deg,#4C1A9B 0%,#351171 100%)!important;
-  border-color:rgba(47,16,103,.22)!important;
-}
-.service-card h3,.service-card p,.service-card li,
-.lum-360-grid article h3,.lum-360-grid article p,
-.problem-grid article h3,.problem-grid article p,
-.mkt-service-list article h3,.mkt-service-list article p,
-.marketing-capabilities>div h3,.marketing-capabilities>div p,
-.package-card h3,.package-card p,.package-option h3,.package-option p,
-.market-proof-grid .market-stat h3,.market-proof-grid .market-stat p{
-  color:#fff!important;
 }
 .service-card a,.service-card li:before,
 .lum-360-grid article span,
@@ -3691,82 +3191,39 @@ body::selection{background:#FFD60A;color:#5B21B6}
   background-image:linear-gradient(145deg,#5B21B6 0%,#3A147A 100%)!important;
 }
 
-/* =========================================================
-   LUM — AJUSTE V7: CONTRASTE DOS CARDS DE PACOTES
-   Mantém identidade roxo + amarelo; melhora leitura.
-   ========================================================= */
-.package-card,
-.package-option{
-  color:#FFFFFF!important;
-}
-.package-card h3,
-.package-card p,
-.package-card li,
-.package-option strong,
-.package-option p,
-.package-option em{
-  color:#FFFFFF!important;
-  opacity:1!important;
-}
-.package-label,
-.package-number,
-.package-icon,
-.package-card li::before,
-.package-option span{
-  color:#FFD60A!important;
-  opacity:1!important;
-}
-.package-card li::before{
-  background:#FFD60A!important;
-  box-shadow:0 0 10px rgba(255,214,10,.28)!important;
-}
-.package-icon{
-  background:rgba(255,214,10,.10)!important;
-  border-color:rgba(255,214,10,.28)!important;
-}
-.package-card::before{
-  background:radial-gradient(circle,rgba(255,214,10,.08),transparent 70%)!important;
-}
-.package-card .package-open{
-  color:#FFFFFF!important;
+/* LUM — Pacotes: identidade e contraste */
+.package-section {
+  background: #FFD60A;
 }
 
-
-/* =========================================================
-   LUM — FIX V8.1: CONTRASTE REAL DOS CARDS DE PACOTES
-   Motivo: regras globais da .section tinham especificidade maior
-   e estavam sobrescrevendo o branco dos cards.
-   ========================================================= */
-
-.package-section .package-card,
-.package-section .package-card * {
-  opacity: 1 !important;
+.package-section .package-card {
+  background: linear-gradient(155deg, #5B21B6 0%, #3F1684 100%);
+  color: #FFFFFF;
 }
 
-.package-section .package-card h3,
+.package-section .package-card h3 {
+  color: #FFFFFF;
+}
+
 .package-section .package-card p,
 .package-section .package-card li {
-  color: #FFFFFF !important;
+  color: rgba(255,255,255,.92);
 }
 
 .package-section .package-card .package-label,
 .package-section .package-card .package-number,
 .package-section .package-card .package-icon,
+.package-section .package-card li::marker,
 .package-section .package-card li::before {
-  color: #FFD60A !important;
+  color: #FFD60A;
 }
 
-.package-section .package-card p,
-.package-section .package-card li {
-  color: rgba(255,255,255,.90) !important;
+.package-section .package-card .package-open {
+  background: #141118;
+  color: #FFFFFF;
 }
 
-.package-section .package-card .package-open,
-.package-section .package-card .package-open span {
-  color: #FFFFFF !important;
-}
-
-.package-section .package-card {
-  background: linear-gradient(155deg,#4C1A9B 0%,#351171 100%) !important;
+.package-section .package-card .package-open:hover {
+  background: #211A29;
 }
 
