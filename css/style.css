@@ -2335,3 +2335,157 @@ body::selection{background:#FFD60A;color:#5B21B6}
 .section.package-section .package-card .package-open {
   color: #FFFFFF !important;
 }
+
+/* LUM V15 — refinamento de forma e responsividade */
+
+/* Marketing: substituir aparência de tabela por cartões leves e arredondados */
+.mkt-service-list{
+  border-top:0;
+  display:grid;
+  gap:14px;
+}
+.mkt-service-list article{
+  grid-template-columns:54px .82fr 1.18fr;
+  gap:24px;
+  padding:24px 26px;
+  border:1px solid rgba(255,214,10,.18);
+  border-radius:24px;
+  background:rgba(255,255,255,.055)!important;
+}
+.mkt-service-list article:hover{
+  transform:translateY(-2px);
+  border-color:rgba(255,214,10,.34);
+}
+.mkt-service-list h3{margin:0;line-height:1.15}
+
+/* Prova de mercado: conteúdo de apoio, não uma seção dominante */
+.market-proof-section{padding:72px 0 68px!important}
+.market-proof-intro{margin-bottom:32px}
+.market-proof-intro h2{
+  font-size:clamp(2rem,3.7vw,4rem);
+  line-height:1;
+}
+.market-proof-grid{
+  gap:14px;
+  border:0;
+}
+.market-proof-grid .market-stat{
+  min-height:0!important;
+  padding:26px!important;
+  border-radius:26px!important;
+  border:1px solid rgba(255,214,10,.18)!important;
+}
+.market-stat>strong{
+  font-size:clamp(3.7rem,5.5vw,5.8rem)!important;
+}
+.market-stat p{
+  margin:18px 0 22px;
+  line-height:1.5;
+}
+.market-credibility-note{
+  margin-top:18px;
+  padding:18px 20px;
+  border-radius:20px;
+}
+
+/* Arredondamento consistente nos blocos de conteúdo, sem alterar estrutura */
+.problem-grid article,
+.testimonial-grid blockquote,
+.package-card,
+.package-option,
+.lum-360-grid article{
+  border-radius:26px!important;
+}
+.mkt-hero-photo,
+.founder-dev-portrait,
+.founder-patricia-portrait{
+  border-radius:28px;
+  overflow:hidden;
+}
+
+/* Mobile: reduzir ocupação vertical das informações secundárias */
+@media(max-width:620px){
+  .mkt-intro,
+  .mkt-problems,
+  .mkt-services,
+  .mkt-work,
+  .mkt-testimonials,
+  .mkt-cta{
+    padding:68px 0;
+  }
+
+  .mkt-service-list{
+    gap:10px;
+    margin-top:28px;
+  }
+  .mkt-service-list article{
+    grid-template-columns:34px 1fr;
+    gap:8px 12px;
+    padding:18px;
+    border-radius:20px;
+  }
+  .mkt-service-list article p{
+    grid-column:2;
+    margin:0;
+    font-size:.82rem;
+    line-height:1.5;
+  }
+  .mkt-service-list h3{
+    font-size:1.08rem;
+  }
+
+  .market-proof-section{
+    padding:54px 0 50px!important;
+  }
+  .market-proof-intro{
+    margin-bottom:22px;
+  }
+  .market-proof-intro h2{
+    font-size:2.15rem!important;
+    letter-spacing:-.045em;
+  }
+  .market-proof-grid{
+    grid-template-columns:repeat(3, minmax(0,1fr))!important;
+    gap:8px;
+  }
+  .market-proof-grid .market-stat{
+    padding:16px 10px!important;
+    border-radius:18px!important;
+    min-width:0;
+  }
+  .market-stat>strong{
+    font-size:2.25rem!important;
+    letter-spacing:-.06em;
+  }
+  .market-stat>strong span{
+    font-size:.42em;
+    margin-left:1px;
+  }
+  .market-stat p{
+    margin:10px 0 0;
+    font-size:.68rem;
+    line-height:1.35;
+  }
+  .market-stat a{
+    display:none;
+  }
+  .market-credibility-note{
+    margin-top:12px;
+    padding:14px 16px;
+    border-radius:16px;
+    gap:8px;
+  }
+  .market-credibility-note p{
+    font-size:.72rem;
+    line-height:1.45;
+  }
+
+  .problem-grid article,
+  .testimonial-grid blockquote,
+  .package-card,
+  .package-option,
+  .lum-360-grid article{
+    border-radius:20px!important;
+  }
+}
+
