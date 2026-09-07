@@ -222,6 +222,15 @@ updateScrollStory();
       summaryDescription.textContent = description;
     }
     closeModal();
+
+    const messages = {
+      site: `Olá! Vim pelo site da LUM e gostaria de conversar sobre ${optionName} para minha empresa.`,
+      marketing: `Olá! Vim pelo site da LUM e gostaria de conversar sobre ${optionName} para minha marca.`,
+      combo: `Olá! Vim pelo site da LUM e gostaria de conversar sobre ${optionName}.`
+    };
+    const whatsapp = `https://wa.me/5551985308573?text=${encodeURIComponent(messages[groupName] || 'Olá! Vim pelo site da LUM e gostaria de conversar sobre um projeto.')}`;
+    const cta = document.querySelector('#contato .btn-light');
+    if(cta) cta.href = whatsapp;
     document.getElementById('contato')?.scrollIntoView({behavior:'smooth',block:'start'});
   }
 
