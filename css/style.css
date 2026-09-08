@@ -2628,3 +2628,146 @@ body::selection{background:#FFD60A;color:#5B21B6}
   }
 }
 
+/* ==========================================================
+   PLANOS LUM POR ASSINATURA
+   ========================================================== */
+.subscription-plans-section .package-heading{
+  max-width:820px;
+}
+
+.subscription-plans-section .package-grid{
+  align-items:stretch;
+}
+
+.subscription-plans-section .package-card{
+  min-height:650px;
+}
+
+.subscription-plans-section .package-card.subscription-featured{
+  position:relative;
+  border:2px solid #FFD60A!important;
+  transform:translateY(-8px);
+}
+
+.package-tag{
+  position:absolute;
+  top:18px;
+  right:18px;
+  padding:7px 11px;
+  border-radius:999px;
+  background:#FFD60A;
+  color:#351171!important;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.08em;
+}
+
+.package-points{
+  display:flex;
+  align-items:flex-end;
+  gap:9px;
+  margin:4px 0 8px;
+  color:#FFD60A;
+}
+
+.package-points strong{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:44px;
+  line-height:.95;
+  letter-spacing:-.045em;
+}
+
+.package-points span{
+  padding-bottom:4px;
+  color:#FFFFFF;
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.07em;
+}
+
+.package-price{
+  margin:0 0 20px;
+  color:#FFFFFF;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:22px;
+  font-weight:700;
+}
+
+.package-price small{
+  color:#FFD60A;
+  font-size:12px;
+  font-family:"Inter",sans-serif;
+  font-weight:700;
+}
+
+.subscription-plans-section .package-open{
+  text-decoration:none;
+  background:#351171;
+  border-color:rgba(255,214,10,.42);
+}
+
+.subscription-plans-section .package-open:hover{
+  background:#FFD60A;
+  color:#351171!important;
+  border-color:#FFD60A;
+}
+
+.package-points-note{
+  margin-top:28px;
+  padding:24px 28px;
+  border-radius:22px;
+  background:#351171;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:22px;
+}
+
+.package-points-note strong{
+  color:#FFD60A;
+  font-size:15px;
+}
+
+.package-points-note p{
+  margin:0;
+  color:#FFFFFF;
+  line-height:1.55;
+  font-size:13px;
+}
+
+.package-points-note a{
+  color:#FFD60A;
+  font-weight:800;
+  text-decoration:none;
+  white-space:nowrap;
+}
+
+@media(max-width:900px){
+  .subscription-plans-section .package-card{
+    min-height:auto;
+  }
+  .subscription-plans-section .package-card.subscription-featured{
+    transform:none;
+  }
+  .package-points-note{
+    grid-template-columns:1fr;
+    gap:8px;
+  }
+}
+
+@media(max-width:560px){
+  .package-points strong{
+    font-size:38px;
+  }
+  .package-tag{
+    top:14px;
+    right:14px;
+    font-size:9px;
+  }
+  .package-points-note{
+    padding:20px;
+    border-radius:18px;
+  }
+}
+
