@@ -2532,3 +2532,99 @@ body::selection{background:#FFD60A;color:#5B21B6}
 .subscription-note{text-align:center;margin:30px 0 0;color:#49355f;font-size:15px}.subscription-note strong{color:#5B21B6}
 @media(max-width:900px){.subscription-steps{grid-template-columns:repeat(2,1fr)}.lum-points-card{grid-template-columns:1fr;gap:28px}}
 @media(max-width:620px){.subscription-section{padding:76px 0}.subscription-intro h2{font-size:2.65rem}.subscription-lead{font-size:.95rem}.subscription-actions{align-items:stretch}.subscription-actions .btn{width:100%}.subscription-anchor{text-align:center}.subscription-steps{grid-template-columns:1fr 1fr;gap:8px;margin-top:38px}.subscription-steps article{padding:18px;min-height:160px;border-radius:20px}.subscription-steps article strong{font-size:.95rem;margin-top:22px}.subscription-steps article p{font-size:.72rem}.lum-points-card{padding:24px;border-radius:24px}.points-copy h3{font-size:2rem}.points-copy p{font-size:.85rem}.points-examples{padding:18px}}
+
+/* LUM — refinamento visual da seção "Por que a LUM?" */
+.lum-360-section{
+  background:#FFD60A!important;
+  background-image:none!important;
+}
+
+.lum-360-section .section-heading h2{
+  color:#351171!important;
+}
+
+.lum-360-section .section-heading > p:last-child{
+  color:#351171!important;
+  opacity:1!important;
+  font-weight:500;
+}
+
+/* Remove a moldura contínua em volta dos cards e separa cada bloco */
+.lum-360-grid{
+  border:0!important;
+  background:transparent!important;
+  overflow:visible!important;
+  gap:14px!important;
+}
+
+.lum-360-grid article{
+  border:0!important;
+  border-right:0!important;
+  border-bottom:0!important;
+  background:#5B21B6!important;
+  background-image:none!important;
+  border-radius:28px!important;
+  box-shadow:0 10px 24px rgba(53,17,113,.14)!important;
+}
+
+.lum-360-grid article h3{
+  color:#FFFFFF!important;
+}
+
+.lum-360-grid article p{
+  color:#FFFFFF!important;
+  opacity:.96!important;
+}
+
+.lum-360-grid article span{
+  color:#FFD60A!important;
+  font-weight:800!important;
+}
+
+/* A antiga faixa amarela tinha pouco contraste; agora vira um bloco roxo limpo */
+.lum-flow{
+  margin-top:28px!important;
+  padding:18px 26px!important;
+  border:0!important;
+  border-radius:22px!important;
+  background:#5B21B6!important;
+  color:#FFFFFF!important;
+  box-shadow:0 8px 20px rgba(53,17,113,.12)!important;
+}
+
+.lum-flow strong{
+  color:#FFFFFF!important;
+  font-weight:800!important;
+}
+
+.lum-flow i{
+  color:#FFD60A!important;
+  opacity:1!important;
+}
+
+@media(max-width:900px){
+  .lum-360-grid{
+    gap:12px!important;
+  }
+  .lum-360-grid article{
+    border:0!important;
+  }
+}
+
+@media(max-width:560px){
+  .lum-360-grid{
+    gap:10px!important;
+  }
+  .lum-360-grid article{
+    border-radius:20px!important;
+  }
+  .lum-flow{
+    gap:10px!important;
+    padding:16px 18px!important;
+    border-radius:18px!important;
+  }
+  .lum-flow strong{
+    font-size:.68rem!important;
+  }
+}
+
