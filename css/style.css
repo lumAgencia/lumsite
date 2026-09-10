@@ -2771,3 +2771,63 @@ body::selection{background:#FFD60A;color:#5B21B6}
   }
 }
 
+
+/* Ajustes LUM — pack 10/09/2026 */
+/* Assinatura: reforço de contraste em título auxiliar e CTA */
+.subscription-section .eyebrow{
+  color:#351171 !important;
+  opacity:1 !important;
+  font-weight:900 !important;
+}
+.subscription-section .btn-primary{
+  background:#351171 !important;
+  color:#FFFFFF !important;
+  border-color:#351171 !important;
+  box-shadow:0 12px 28px rgba(53,17,113,.18) !important;
+}
+.subscription-section .btn-primary:hover{
+  background:#2F1067 !important;
+  color:#FFD60A !important;
+}
+
+/* Planos: texto do card informativo dos Pontos LUM sempre legível */
+.package-points-note p{
+  color:#FFFFFF !important;
+  opacity:1 !important;
+}
+
+/* Perfis: o card de especialidade não cobre mais a foto */
+.founder-dev-profile{
+  flex-direction:column;
+  gap:16px;
+}
+.founder-dev-profile .dev-floating-note{
+  position:relative;
+  right:auto;
+  left:auto;
+  bottom:auto;
+  width:min(100%,390px);
+  box-sizing:border-box;
+  margin:0 auto;
+}
+
+/* Novos retratos: enquadramento preserva rosto e composição vertical */
+.founder-dev-profile .dev-profile-photo img{
+  object-position:center center;
+}
+
+@media(max-width:620px){
+  .subscription-section .eyebrow{
+    display:block;
+    color:#351171 !important;
+    font-size:11px !important;
+    letter-spacing:.16em !important;
+  }
+  .subscription-section .btn-primary{
+    background:#351171 !important;
+    color:#FFFFFF !important;
+  }
+  .founder-dev-profile .dev-floating-note{
+    width:min(100%,430px) !important;
+  }
+}
