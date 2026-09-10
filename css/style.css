@@ -2866,3 +2866,8 @@ body::selection{background:#FFD60A;color:#5B21B6}
     padding-top:54px;
   }
 }
+
+/* 2026-09-10 — teste da Home sem o círculo/glow central de fundo */
+.lum-centered-hero::before{
+  display:none !important;
+}
