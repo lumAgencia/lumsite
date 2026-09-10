@@ -2831,3 +2831,38 @@ body::selection{background:#FFD60A;color:#5B21B6}
     width:min(100%,430px) !important;
   }
 }
+\n\n/* Ajustes LUM — pack 10/09/2026 v2 */
+/* Planos: contraste definitivo do texto central do card Pontos LUM */
+.subscription-plans-section .package-points-note p,
+.package-points-note > p{
+  color:#FFFFFF !important;
+  opacity:1 !important;
+  visibility:visible !important;
+  text-shadow:0 1px 1px rgba(0,0,0,.08);
+}
+
+/* Hero: nova mensagem e proporção da primeira tela */
+.lum-centered-copy h1{
+  max-width:1050px !important;
+}
+
+@media(max-width:620px){
+  .lum-centered-hero{
+    min-height:100svh !important;
+    box-sizing:border-box;
+    padding-top:118px !important;
+    padding-bottom:64px !important;
+  }
+  .lum-centered-copy h1{
+    font-size:clamp(2.65rem,11.2vw,3.35rem) !important;
+    line-height:.94 !important;
+  }
+  .lum-centered-copy h1 strong{
+    display:block;
+    margin-top:7px;
+  }
+  .lum-scroll-cue{
+    margin-top:auto !important;
+    padding-top:54px;
+  }
+}
