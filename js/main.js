@@ -155,3 +155,31 @@ updateScrollStory();
     start();
   });
 })();
+
+/* ===== Planos LUM: capacidade mensal vigente ===== */
+(() => {
+  const pointsByPlan = {
+    'LUM ESSENCIAL': '250',
+    'LUM PRO': '500',
+    'LUM BLACK': '900'
+  };
+
+  document.querySelectorAll('.subscription-plans-section .package-card').forEach((card) => {
+    const label = card.querySelector('.package-label')?.textContent.trim().toUpperCase();
+    const points = pointsByPlan[label];
+    if (!points) return;
+
+    const pointsValue = card.querySelector('.package-points strong');
+    if (pointsValue) pointsValue.textContent = points;
+
+    const link = card.querySelector('.package-open');
+    if (link) {
+      const url = new URL(link.href);
+      const text = url.searchParams.get('text');
+      if (text) {
+        url.searchParams.set('text', text.replace(/com\s+\d+\s+Pontos\s+LUM/i, `com ${points} Pontos LUM`));
+        link.href = url.toString();
+      }
+    }
+  });
+})();
